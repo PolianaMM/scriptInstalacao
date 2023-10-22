@@ -19,11 +19,11 @@ sleep 3
 
         echo "Agora será baixado o arquivo .JAR"
        # cd /home/$USER/Desktop
-        wget https://github.com/SPTECH-Nowl/SistemaJava/blob/main/target/sistema-nowl-1.0-jar-with-dependencies.jar
+        wget https://github.com/Noct-U/Noct.u/blob/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar
         sleep 3
 
         echo "Arquivo baixado, agora será executado"
-        java -jar noctu-looca-1.0-SNAPSHOT.jar
+        java -jar noctu-looca.jar
         sleep 3
 
         echo "Aquivo executando..."
@@ -39,15 +39,16 @@ sleep 3
 
       echo "Agora será baixado o arquivo .JAR"
       #cd /home/$USER/Desktop
-      wget https://github.com/SPTECH-Nowl/SistemaJava/blob/main/target/sistema-nowl-1.0-jar-with-dependencies.jar
+      wget https://github.com/Noct-U/Noct.u/blob/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar
       sleep 6
 
       echo "Arquivo baixado, agora será executado"
-      java -jar noctu-looca-1.0-SNAPSHOT.jar
+      java -jar noctu-looca.jar
+      ./noctu-looca.jar
       sleep 7
 
       echo "Aquivo executando..."
-      ./noctu-looca-1.0-SNAPSHOT.jar
+      ./noctu-looca.jar
       sleep 8
     else
       echo "Você escolheu não prosseguir. Não poderemos continuar com instalação da aplicação."
