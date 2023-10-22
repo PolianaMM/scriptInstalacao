@@ -19,7 +19,7 @@ sleep 3
 
         echo "Agora será baixado o arquivo .JAR"
        # cd /home/$USER/Desktop
-        wget https://github.com/Noct-U/Noct.u/tree/main/java/target/noctu-looca-1.0-SNAPSHOT.jar
+        wget https://github.com/SPTECH-Nowl/SistemaJava/blob/main/target/sistema-nowl-1.0-jar-with-dependencies.jar
         sleep 3
 
         echo "Arquivo baixado, agora será executado"
@@ -39,7 +39,7 @@ sleep 3
 
       echo "Agora será baixado o arquivo .JAR"
       #cd /home/$USER/Desktop
-      wget https://github.com/Noct-U/Noct.u/tree/main/java/target/noctu-looca-1.0-SNAPSHOT.jar
+      wget https://github.com/SPTECH-Nowl/SistemaJava/blob/main/target/sistema-nowl-1.0-jar-with-dependencies.jar
       sleep 6
 
       echo "Arquivo baixado, agora será executado"
