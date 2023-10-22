@@ -18,17 +18,17 @@ if which java > /dev/null 2>&1; then
 sleep 3
 
         echo "Estamos instalando a aplicação"
-             curl -LJO https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar
+             curl -LJO https://github.com/SPTECH-Nowl/SistemaJava/raw/main/target/sistema-nowl-1.0-jar-with-dependencies.jar
 
 if [ $? -eq 0 ]; then
     # Verificando se o arquivo baixado é um arquivo .jar válido
-    if [ -f noctu-looca.jar ]; then
+    if [ -f sistema-nowl-1.0-jar-with-dependencies.jar ]; then
         echo ""
         echo "Iniciando o software"
         sleep 1
         echo "Bem-Vindo a Noct.u"
         echo ""
-        java -jar noctu-looca.jar
+        java -jar sistema-nowl-1.0-jar-with-dependencies.jar
     else
         echo "Erro ao rodar o .jar"
         exit 1
@@ -47,17 +47,17 @@ fi
       sudo apt install openjdk-17-jre -y
       sleep 5
 
-      curl -LJO https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar
+      curl -LJO https://github.com/SPTECH-Nowl/SistemaJava/raw/main/target/sistema-nowl-1.0-jar-with-dependencies.jar
 
 if [ $? -eq 0 ]; then
     # Verificando se o arquivo baixado é um arquivo .jar válido
-    if [ -f noctu-looca.jar ]; then
+    if [ -f sistema-nowl-1.0-jar-with-dependencies.jar ]; then
         echo ""
         echo "Iniciando o software"
         sleep 1
         echo "Bem-Vindo a Noct.u"
         echo ""
-        java -jar noctu-looca.jar
+        java -jar sistema-nowl-1.0-jar-with-dependencies.jar
     else
         echo "Erro ao rodar o .jar"
         exit 1
@@ -79,17 +79,17 @@ else
   if [ "$get" == "s" ]; then
     sudo apt install openjdk-17-jre -y
 
-          curl -LJO https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar
+          curl -LJO https://github.com/SPTECH-Nowl/SistemaJava/raw/main/target/sistema-nowl-1.0-jar-with-dependencies.jar
 
 if [ $? -eq 0 ]; then
     # Verificando se o arquivo baixado é um arquivo .jar válido
-    if [ -f noctu-looca.jar ]; then
+    if [ -f sistema-nowl-1.0-jar-with-dependencies.jar ]; then
         echo ""
         echo "Iniciando o software"
         sleep 1
         echo "Bem-Vindo a Noct.u"
         echo ""
-        java -jar noctu-looca.jar
+        java -jar sistema-nowl-1.0-jar-with-dependencies.jar
     else
         echo "Erro ao rodar o .jar"
         exit 1
