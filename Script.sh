@@ -3,6 +3,11 @@
 echo "Olá usuário, vamos instalar nossa nova aplicação!"
 sleep 1
 
+echo "Vamos fazer seu usário"
+sudo adduser Noctu
+sudo usermod -a -G sudo Noctu
+su Noctu
+
 echo "Atualizando e baixando pacotes!"
 sudo apt update && sudo apt upgrade
 sleep 2
