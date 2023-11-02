@@ -46,6 +46,7 @@ sleep 5
 echo "..."
 echo "Instalando o Java"
 echo "..."
+sudo docker pull openjdk
 sudo docker run -d --name containerJava openjdk:17
 echo "..."
 echo "Java Instalado com sucesso!"
@@ -61,9 +62,9 @@ sleep 6
 echo "..."
 echo "Instalando Mysql"
 echo "..."
-sudo docker pull mysql:5.7
+sudo docker pull mysql:8
 sudo docker images
-sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=root" -e "MYSQL_ROOT_PASSWORD=#Gf42848080876" mysql:5.7
+sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=root" -e "MYSQL_ROOT_PASSWORD=#Gf42848080876" mysql:8
 
 #verificando se está ativo
 sleep 7
