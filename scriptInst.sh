@@ -22,14 +22,14 @@ echo "Pacotes atualizados!"
 echo "..."
 
 #Baixando interface gráfica
-sleep 3
-echo "..."
-echo "Instalando Interface Gráfica"
-echo "..."
-sudo apt install xrdp lxde-core lxde tigervnc-standalone-server -y
-echo "..."
-echo "interfae gráfica instalada!"
-echo "..."
+#sleep 3
+#echo "..."
+#echo "Instalando Interface Gráfica"
+#echo "..."
+#sudo apt install xrdp lxde-core lxde tigervnc-standalone-server -y
+#echo "..."
+#echo "interfae gráfica instalada!"
+#echo "..."
 
 #Instalando e iniciando docker
 sleep 4
@@ -46,9 +46,7 @@ sleep 5
 echo "..."
 echo "Instalando o Java"
 echo "..."
-sudo docker run -d --name containerJava openjdk
-sudo docker exec -it containerJava apt update -y
-sudo docker exec -it containerJava apt install openjdk-17-jre -y
+sudo docker run -d --name containerJava openjdk:17
 echo "..."
 echo "Java Instalado com sucesso!"
 echo "..."
