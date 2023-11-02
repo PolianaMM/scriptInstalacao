@@ -36,15 +36,15 @@ sleep 5
 echo "..."
 echo "Instalando o Java"
 echo "..."
-sudo docker pull openjdk:17
-sudo docker run -d --name containerJava openjdk:17
+ssudo docker pull openjdk:17-alpine
+sudo docker run -d --name containerJava openjdk:17-alpine
 echo "..."
 echo "Java Instalado com sucesso!"
 echo "..."
 
 #Instalação do .jar no container do java
-#sudo docker exec -it containerJava sh -c 'mkdir -p /usr/src/noctu/'
-#sudo docker exec -it containerJava sh -c 'wget -O /usr/src/noctu/noctu-looca.jar https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar'
+sudo docker exec -it containerJava sh -c 'mkdir -p /usr/src/noctu/'
+sudo docker exec -it containerJava sh -c 'wget -O /usr/src/noctu/noctu-looca.jar java/out/artifacts/noctu_looca_jar/noctu-looca.jar'
 
 #Criação do container BD (instalação)
 #sleep 6
