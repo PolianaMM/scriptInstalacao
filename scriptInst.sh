@@ -59,6 +59,7 @@ echo "Instalando o Java"
 echo "..."
 sudo docker pull openjdk:17-alpine
 sudo docker run -d --name containerJava openjdk:17-alpine sleep infinity
+sudo docker start containerJava
 
 sudo wget -O noctu-looca.jar https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar
 
