@@ -21,6 +21,16 @@ echo "..."
 echo "Pacotes atualizados!"
 echo "..."
 
+#instalação java
+sleep 5
+echo "..."
+echo "Instalando o Java"
+echo "..."
+sudo apt install openjdk-17-jre -y
+echo "..."
+echo "Java Instalado com sucesso!"
+echo "..."
+
 #Instalando e iniciando docker
 sleep 4
 echo "..."
@@ -32,19 +42,25 @@ sudo systemctl start docker
 sudo systemctl enable docker
 
 #Container e instalação java
-sleep 5
-echo "..."
-echo "Instalando o Java"
-echo "..."
-sudo docker pull openjdk:17-alpine
-sudo docker run -d --name containerJava openjdk:17-alpine
-echo "..."
-echo "Java Instalado com sucesso!"
-echo "..."
+#sleep 5
+#echo "..."
+#echo "Instalando o Java"
+#echo "..."
+#sudo docker pull openjdk:17(-alpine)
+#não está reconhecendo a imagem, print do erro no word "validar com professor"
+#sudo docker run -d --name containerJava openjdk:17(-alpine)
+#echo "..."
+#echo "Java Instalado com sucesso!"
+#echo "..."
 
-#Instalação do .jar no container do java
-sudo docker exec -it containerJava sh -c 'mkdir -p /usr/src/noctu/'
-sudo docker exec -it containerJava sh -c 'wget -O /usr/src/noctu/noctu-looca.jar java/out/artifacts/noctu_looca_jar/noctu-looca.jar'
+#Instalação do .jar no container
+
+sudo docker run -d --name containerApp openjdk:17-alpine sleep infinity
+
+sudo wget -O noctu-looca.jar https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar
+
+# Copiar o arquivo .jar para o contêiner
+sudo docker cp noctu-looca.jar containerJava:/usr/src/noctu/noctu-looca.jar
 
 #Criação do container BD (instalação)
 #sleep 6
