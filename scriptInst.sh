@@ -21,16 +21,6 @@ echo "..."
 echo "Pacotes atualizados!"
 echo "..."
 
-#Baixando interface gráfica
-#sleep 3
-#echo "..."
-#echo "Instalando Interface Gráfica"
-#echo "..."
-#sudo apt install xrdp lxde-core lxde tigervnc-standalone-server -y
-#echo "..."
-#echo "interfae gráfica instalada!"
-#echo "..."
-
 #Instalando e iniciando docker
 sleep 4
 echo "..."
@@ -46,30 +36,30 @@ sleep 5
 echo "..."
 echo "Instalando o Java"
 echo "..."
-sudo docker pull openjdk:17-alpine
-sudo docker run -d --name containerJava openjdk:17-alpine
+sudo docker pull openjdk:17
+sudo docker run -d --name containerJava openjdk:17
 echo "..."
 echo "Java Instalado com sucesso!"
 echo "..."
 
 #Instalação do .jar no container do java
-sudo docker exec -it containerJava sh -c 'mkdir -p /usr/src/noctu/'
-sudo docker exec -it containerJava sh -c 'wget -O /usr/src/noctu/noctu-looca.jar https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar'
+#sudo docker exec -it containerJava sh -c 'mkdir -p /usr/src/noctu/'
+#sudo docker exec -it containerJava sh -c 'wget -O /usr/src/noctu/noctu-looca.jar https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar'
 
 #Criação do container BD (instalação)
-sleep 6
-echo "..."
-echo "Instalando Mysql"
-echo "..."
-sudo docker pull mysql:8
-sudo docker images
-sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=root" -e "MYSQL_ROOT_PASSWORD=#Gf42848080876" mysql:8
+#sleep 6
+#echo "..."
+#echo "Instalando Mysql"
+#echo "..."
+#sudo docker pull mysql:8
+#sudo docker images
+#sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=root" -e "MYSQL_ROOT_PASSWORD=#Gf42848080876" mysql:8
 
 #verificando se está ativo
-sleep 7
-echo "..."
-echo "Confirmação"
-echo "..."
+#sleep 7
+#echo "..."
+#echo "Confirmação"
+#echo "..."
 sudo docker ps -a
 
 echo "Instalação concluida com sucesso!"
