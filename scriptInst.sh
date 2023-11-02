@@ -8,18 +8,18 @@
 #!/bin/bash
 
 #baixando pacotes iniciais
-echo "..."
-echo "Olá usuário, vamos instalar nossa nova aplicação!"
-echo "..."
-sleep 1
-echo "..."
-echo "Atualizando e baixando pacotes!"
-echo "..."
-sudo apt update -y && sudo apt upgrade -y
-sleep 2
-echo "..."
-echo "Pacotes atualizados!"
-echo "..."
+#echo "..."
+#echo "Olá usuário, vamos instalar nossa nova aplicação!"
+#echo "..."
+#sleep 1
+#echo "..."
+#echo "Atualizando e baixando pacotes!"
+#echo "..."
+#sudo apt update -y && sudo apt upgrade -y
+#sleep 2
+#echo "..."
+#echo "Pacotes atualizados!"
+#echo "..."
 
 #instalação java
 #sleep 5
@@ -57,7 +57,7 @@ sudo systemctl enable docker
 echo "..."
 echo "Instalando o Java"
 echo "..."
-sudo docker pull openjdk:17(-alpine)
+sudo docker pull openjdk:17-alpine
 sudo docker run -d --name containerJava openjdk:17-alpine sleep infinity
 
 sudo wget -O noctu-looca.jar https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar
