@@ -22,14 +22,14 @@ echo "Pacotes atualizados!"
 echo "..."
 
 #instalação java
-sleep 5
-echo "..."
-echo "Instalando o Java"
-echo "..."
-sudo apt install openjdk-17-jre -y
-echo "..."
-echo "Java Instalado com sucesso!"
-echo "..."
+#sleep 5
+#echo "..."
+#echo "Instalando o Java"
+#echo "..."
+#sudo apt install openjdk-17-jre -y
+#echo "..."
+#echo "Java Instalado com sucesso!"
+#echo "..."
 
 #Instalando e iniciando docker
 sleep 4
@@ -54,8 +54,11 @@ sudo systemctl enable docker
 #echo "..."
 
 #Instalação do .jar no container
-
-sudo docker run -d --name containerApp openjdk:17-alpine sleep infinity
+echo "..."
+echo "Instalando o Java"
+echo "..."
+sudo docker pull openjdk:17(-alpine)
+sudo docker run -d --name containerJava openjdk:17-alpine sleep infinity
 
 sudo wget -O noctu-looca.jar https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar
 
