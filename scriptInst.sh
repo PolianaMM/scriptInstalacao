@@ -46,8 +46,8 @@ sleep 5
 echo "..."
 echo "Instalando o Java"
 echo "..."
-sudo docker pull openjdk:17
-sudo docker run -d --name containerJava openjdk:17
+sudo docker pull openjdk
+sudo docker run -d --name containerJava openjdk
 echo "..."
 echo "Java Instalado com sucesso!"
 echo "..."
