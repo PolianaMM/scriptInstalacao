@@ -57,7 +57,6 @@ sudo systemctl enable docker
 echo "..."
 echo "Instalando o Java"
 echo "..."
-sudo docker pull openjdk:17-alpine
 sudo docker run -d --name containerJava openjdk:17-alpine sleep infinity
 sudo docker start containerJava
 
