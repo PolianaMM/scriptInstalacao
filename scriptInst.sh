@@ -74,7 +74,7 @@ sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=root" -e "MYSQ
 
 sudo docker ps -a
 
-sudo docker exec -i ContainerBD mysql -u noctuBD -p "#Gf42848080876" < scriptConf.sql 
+sudo docker exec -i noctuBD mysql -u root -p "#Gf42848080876" < scriptConf.sql 
 
 
 echo "Instalação concluida com sucesso!"
