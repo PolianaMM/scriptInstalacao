@@ -4,12 +4,12 @@ echo "Iniciando configurações"
 
 sleep 8
 echo "Acessando Banco de Dados"
-sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'SHOW DATABASES;'"
+sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'USE root;'"
 
 # Verificando e executando o BD
 sleep 9
 echo "Iniciando Banco de Dados"
-sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'USE root;'"
+sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'SHOW DATABASES;'"
 
 #Verificando se banco foi criado corretamente
 if [ $? -eq 0 ]; then
@@ -20,7 +20,6 @@ else
 fi
 
 # Criação das tabelas
-#Verificar se é necessário criar todas as tabelas ou se ao executar o banco as tabelas são criadas automaticamente;
 echo "Configurando banco de Dados"
 sudo docker exec -i noctuBD mysql -u root -p'#Gf42848080876' -e "CREATE TABLE empresa(
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
