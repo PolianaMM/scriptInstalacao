@@ -1,6 +1,6 @@
 #Fazer um usuário com permissões de root (sudo adduser noctu) -> (sudo usermod -aG sudo noctu) -> (sudo passwd noctu)
 #Logar no usuário (su noctu)
-#Antes de executar o script baixar o git 
+#Antes de executar o script baixar o git (sudo apt install git)
 #Fazer git clone do repositório
 #Dar permissão ao script para executa-lo (chmod +x)
 #executar script ./
@@ -52,10 +52,6 @@ echo "..."
         echo "Erro ao rodar o .jar"
         exit 1
     fi
-else
-    echo "Erro ao executar o curl"
-    exit 1
-fi
 
 #Instalando e iniciando docker
 sleep 4
