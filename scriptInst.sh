@@ -74,7 +74,21 @@ sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=root" -e "MYSQ
 
 sudo docker ps -a
 
-sudo docker exec -i noctuBD mysql -u root -p "#Gf42848080876" < scriptConf.sql 
+sleep 8
+echo "Acessando Banco de Dados"
+sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'USE root;'" < scriptConf.sql
 
+# Verificando e executando o BD
+sleep 9
+echo "Iniciando Banco de Dados"
+sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'SHOW DATABASES;'"
+
+#Verificando se banco foi criado corretamente
+if [ $? -eq 0 ]; then
+    echo "Banco de dados 'root' criado com sucesso!"
+else
+    echo "Erro ao criar o banco de dados 'root'."
+    exit 1
+fi
 
 echo "Instalação concluida com sucesso!"
