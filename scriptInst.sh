@@ -70,8 +70,11 @@ echo "Instalando Mysql"
 echo "..."
 sudo docker pull mysql:8
 sudo docker images
-sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=root" -e "MYSQL_ROOT_PASSWORD=#Gf42848080876" mysql:8
+sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=root" -e "MYSQL_ROOT_PASSWORD=#Gf42848080876" mysql:8 < scriptConf.sql
 
 sudo docker ps -a
+
+sudo docker exec -i ContainerBD mysql -u noctuBD -p #Gf42848080876 < scriptConf.sql 
+
 
 echo "Instalação concluida com sucesso!"
