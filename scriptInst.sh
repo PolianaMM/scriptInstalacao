@@ -82,7 +82,6 @@ echo "Acessando Banco de Dados"
 # ERROR 1045 (28000): Access denied for user 'aluno'@'localhost' (using password: YES)
 
 echo "..."
-sudo docker exec -i noctuBD mysql -u root -paluno -e "GRANT ALL PRIVILEGES ON *.* TO 'aluno'@'localhost'; FLUSH PRIVILEGES"
 sudo docker exec -i noctuBD mysql -u aluno -paluno aluno < scriptConf.sql
 
 # Verificando e executando o BD
@@ -98,6 +97,7 @@ echo "Iniciando Banco de Dados"
 
 echo "..." 
 sudo docker exec -it noctuBD bash -c "mysql -u aluno -paluno -e 'SHOW DATABASES;'"  
+sudo docker mysql -u root -p -h localhost
 
 # Verificando se o banco foi criado corretamente 
 if [ $? -eq 0 ]; then
