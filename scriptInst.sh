@@ -96,7 +96,6 @@ echo "Iniciando Banco de Dados"
 # ERROR 1045 (28000): Access denied for user 'aluno'@'localhost' (using password: YES)
 # Erro ao criar o banco de dados 'aluno'.
 
-
 echo "..." 
 sudo docker exec -it noctuBD bash -c "mysql -u aluno -paluno -e 'SHOW DATABASES;'"  
 
