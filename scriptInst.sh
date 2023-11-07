@@ -1,20 +1,18 @@
-#Fazer um usuário com permissões de root (sudo adduser noctu) -> (sudo usermod -aG sudo noctu) -> (sudo passwd noctu)
-#Logar no usuário (su noctu)
 #Antes de executar o script baixar o git (sudo apt install git)
-#Fazer git clone do repositório
-#Dar permissão ao script para executa-lo (chmod +x)
-#executar script ./
+#Fazer git clone do repositório do script (git clone *link_repositório*)
+#Dar permissão ao script para executa-lo (chmod +x scriptInst.sh)
+#Executar script (./scriptInst.sh)
 
 #!/bin/bash
 
-#baixando pacotes iniciais
+#Baixando pacotes iniciais
 echo "..."
-echo "Olá usuário, vamos instalar nossa nova aplicação!"
+echo "Olá usuário! Bem -vindo a Noct.u! Vamos iniciar nossa instalação!!"
 echo "..."
 sleep 1
-echo "..."
-echo "Atualizando e baixando pacotes!"
-echo "..."
+echo "..." 
+echo "Atualizando e baixando pacotes!" 
+echo "..." 
 sudo apt update -y && sudo apt upgrade -y
 sleep 2
 echo "..."
@@ -23,19 +21,19 @@ echo "..."
 
 # Instalação java
 sleep 3
-echo "..."
-echo "Instalando o Java"
-echo "..."
+echo "..." 
+echo "Instalando o Java" 
+echo "..." 
 sudo apt install openjdk-17-jre -y
 echo "..."
 echo "Java Instalado com sucesso!"
 echo "..."
 
-#Criação do .jar (instalação)
+#Instalação do .jar
 sleep 6
 echo "..."
 echo "Instalando aplicação Noct.u"
-echo "..."
+echo "..." 
 
         echo "Estamos instalando a aplicação"
              curl -LJO https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar
@@ -46,28 +44,27 @@ echo "..."
         echo "Iniciando o software"
         sleep 1
         echo "Bem-Vindo a Noct.u"
-        echo ""
         java -jar noctu-looca.jar
     else
-        echo "Erro ao rodar o .jar"
+        echo "Erro ao rodar o .jar. Entre em contato com nossa equipe!"
         exit 1
     fi
 
 #Instalando e iniciando docker
 sleep 4
-echo "..."
-echo "Criando Docker.io"
-echo "..."
+echo "..."  
+echo "Criando Docker.io" 
+echo "..."  
 sudo apt install docker.io -y
 docker --version
 sudo systemctl start docker
 sudo systemctl enable docker
 
-#Criação do container BD (instalação)
+#Criação do container Banco de Dados e instalação
 sleep 6
-echo "..."
-echo "Instalando Mysql"
-echo "..."
+echo "..."  
+echo "Instalando Mysql"  
+echo "..."  
 sudo docker pull mysql:8
 sudo docker images
 sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:8
@@ -75,55 +72,30 @@ sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYS
 sudo docker ps -a
 
 sleep 8
-echo "Acessando Banco de Dados"
-sudo docker exec -i noctuBD mysql -u aluno -p'aluno' root < scriptConf.sql
-
-# Verificando e executando o BD
-sleep 9
-echo "Iniciando Banco de Dados"
-sudo docker exec -it noctuBD bash -c "mysql -u aluno -p'aluno' -e 'SHOW DATABASES;'"    
-
-# Verificando se o banco foi criado corretamente
-if [ $? -eq 0 ]; then
-    echo "Banco de dados criado com sucesso!"
-    echo "Iniciando a aplicação Noct.u..."
-    java -jar noctu-looca.jar
-    # Conexão com Banco local
-    # mysql -h 127.0.0.1 -P 3306 -u aluno -p aluno -D aluno sleep 6
 echo "..."
-echo "Instalando Mysql"
+echo "Acessando Banco de Dados"  
 echo "..."
-sudo docker pull mysql:8
-sudo docker images
-sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:8
-
-sudo docker ps -a
-
-sleep 8
-echo "Acessando Banco de Dados"
 sudo docker exec -i noctuBD mysql -u aluno -p'aluno' aluno < scriptConf.sql
 
 # Verificando e executando o BD
 sleep 9
-echo "Iniciando Banco de Dados"
-sudo docker exec -it noctuBD bash -c "mysql -u aluno -p'aluno' -e 'SHOW DATABASES;'"    
+echo "..."
+echo "Iniciando Banco de Dados" 
+echo "..." 
+sudo docker exec -it noctuBD bash -c "mysql -u aluno -p'aluno' -e 'SHOW DATABASES;'"     
 
-# Verificando se o banco foi criado corretamente
+# Verificando se o banco foi criado corretamente 
 if [ $? -eq 0 ]; then
     echo "Banco de dados criado com sucesso!"
     echo "Iniciando a aplicação Noct.u..."
+    #executando aplicação
     java -jar noctu-looca.jar
     # Conexão com Banco local
-    mysql -h 127.0.0.1 -P 3306 -u aluno -p'aluno' -D aluno
+    # mysql -h 127.0.0.1 -P 3306 -u aluno -p aluno -D aluno  
+
 else
-    echo "Erro ao criar o banco de dados 'root'."
+    echo "Erro ao criar o banco de dados 'aluno'."
     exit 1
 fi
 
-echo "Instalação concluida com sucesso!"
-else
-    echo "Erro ao criar o banco de dados 'root'."
-    exit 1
-fi
-
-echo "Instalação concluida com sucesso!"
+echo "BEM - VINDO A NOCT.U!"
