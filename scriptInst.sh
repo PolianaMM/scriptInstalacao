@@ -70,22 +70,26 @@ echo "Instalando Mysql"
 echo "..."
 sudo docker pull mysql:8
 sudo docker images
-sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=root" -e "MYSQL_ROOT_PASSWORD=#Gf42848080876" mysql:8 < scriptConf.sql
+sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=root" -e "MYSQL_ROOT_PASSWORD=#Gf42848080876" mysql:8
 
 sudo docker ps -a
 
 sleep 8
 echo "Acessando Banco de Dados"
-sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'USE root;'" < scriptConf.sql
+sudo docker exec -i noctuBD mysql -u root -p'#Gf42848080876' root < scriptConf.sql
 
 # Verificando e executando o BD
 sleep 9
 echo "Iniciando Banco de Dados"
 sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'SHOW DATABASES;'"    
 
-#Verificando se banco foi criado corretamente
+# Verificando se o banco foi criado corretamente
 if [ $? -eq 0 ]; then
-    echo "Banco de dados 'root' criado com sucesso!"
+    echo "Banco de dados criado com sucesso!"
+    echo "Iniciando a aplicação Noct.u..."
+    java -jar noctu-looca.jar
+    # Conexão com Banco local
+    mysql -h 127.0.0.1 -P 3306 -u root -p'#Gf42848080876' -D root
 else
     echo "Erro ao criar o banco de dados 'root'."
     exit 1

@@ -1,9 +1,5 @@
-#!/bin/bash
 
-echo "Iniciando configurações"
-
-echo "Configurando banco de Dados"
-sudo docker exec -i noctuBD mysql -u root -p'#Gf42848080876' -e "CREATE TABLE empresa(
+CREATE TABLE empresa(
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
     razaoSocial VARCHAR(100) NOT NULL,
@@ -12,6 +8,7 @@ sudo docker exec -i noctuBD mysql -u root -p'#Gf42848080876' -e "CREATE TABLE em
     email VARCHAR(45) NOT NULL,
     senha VARCHAR(15) NOT NULL
 );
+
 CREATE TABLE endereco(
 	idEndereco INT PRIMARY KEY AUTO_INCREMENT,
 	cep CHAR(8) NOT NULL,
@@ -20,6 +17,7 @@ CREATE TABLE endereco(
     bairro VARCHAR(45) NOT NULL,
     logradouro VARCHAR(45) NOT NULL
 );
+
 CREATE TABLE local(
 	idLocal INT AUTO_INCREMENT,
     numero INT NOT NULL,
@@ -32,6 +30,7 @@ CREATE TABLE local(
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa),
     PRIMARY KEY (idLocal, fkEndereco, fkEmpresa)
 );
+
 CREATE TABLE empresaLocataria (
 	idEmpresaLocataria INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
@@ -41,10 +40,12 @@ CREATE TABLE empresaLocataria (
     FOREIGN KEY (fkMatriz) REFERENCES empresaLocataria(idEmpresaLocataria),
     FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)
 );
+
 CREATE TABLE tipoUsuario(
 	idTipoUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nomeTipo VARCHAR(45) NOT NULL
 );
+
 CREATE TABLE usuario(
 	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL,
@@ -55,10 +56,12 @@ CREATE TABLE usuario(
     FOREIGN KEY (fkEmpresaAlocacao) REFERENCES empresaLocataria(idEmpresaLocataria),
     FOREIGN KEY (fkTipoUsuario) REFERENCES tipoUsuario (idTipoUsuario)
 );
+
 CREATE TABLE modeloComputador(
 	idModeloComputador INT PRIMARY KEY auto_increment,
     nome VARCHAR(45)
 );
+
 CREATE TABLE computador(
 	idComputador INT PRIMARY KEY auto_increment,
     numeroSerie VARCHAR(45),
@@ -67,10 +70,12 @@ CREATE TABLE computador(
     FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
     FOREIGN KEY (fkModeloComputador) REFERENCES modeloComputador(idModeloComputador)
 );
+
 CREATE TABLE tipoHardware(
 	idTipoHardware INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(45) NOT NULL
 );
+
 CREATE TABLE hardware(
 	idHardware INT PRIMARY KEY auto_increment,
     nome VARCHAR(100) NOT NULL,
@@ -79,6 +84,7 @@ CREATE TABLE hardware(
 	fkTipoHardware INT,
     FOREIGN KEY (fkTipoHardware) REFERENCES tipoHardware(idTipoHardware)
 );
+
 CREATE TABLE componente(
 	idComponente INT AUTO_INCREMENT,
     fkHardware INT,
@@ -88,6 +94,7 @@ CREATE TABLE componente(
     FOREIGN KEY (fkComputador) REFERENCES computador(idComputador),
     PRIMARY KEY (idComponente, fkHardware, fkComputador)
 );
+
 CREATE TABLE captura (
 	idCaptura INT PRIMARY KEY AUTO_INCREMENT,
     valor FLOAT,
@@ -99,13 +106,6 @@ CREATE TABLE captura (
     FOREIGN KEY (fkComputador) REFERENCES componente(fkComputador),
     FOREIGN KEY (fkHardware) REFERENCES componente(fkHardware),
     FOREIGN KEY (fkComponente) REFERENCES componente(idComponente)
-);"
+);
 
-if [ -z "$RESULT" ]; then
-    echo "Tabelas criadas com sucesso!"
-    sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'SHOW DATABASES;'"
-else
-    echo "Erro ao criar tabelas."
-    echo "$RESULT"
-    exit 1
-fi
+
