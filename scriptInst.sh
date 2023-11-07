@@ -30,25 +30,24 @@ echo "Java Instalado com sucesso!"
 echo "..."
 
 #Instalação do .jar
-sleep 6
+sleep 4
 echo "..."
 echo "Instalando aplicação Noct.u"
 echo "..." 
+echo "Estamos instalando a aplicação"
+curl -LJO https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar
 
-        echo "Estamos instalando a aplicação"
-             curl -LJO https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar
-
-    # Verificando se o arquivo baixado é um arquivo .jar válido
-    if [ -f noctu-looca.jar ]; then
-        echo ""
-        echo "Iniciando o software"
-        sleep 1
-        echo "Bem-Vindo a Noct.u"
-        java -jar noctu-looca.jar
-    else
-        echo "Erro ao rodar o .jar. Entre em contato com nossa equipe!"
-        exit 1
-    fi
+# Verificando se o arquivo baixado é um arquivo .jar válido
+if [ -f noctu-looca.jar ]; then
+    echo ""
+    echo "Iniciando o software"
+    sleep 1
+    echo "Bem-Vindo a Noct.u"
+    java -jar noctu-looca.jar
+else
+    echo "Erro ao rodar o .jar. Entre em contato com nossa equipe!"
+    exit 1
+fi
 
 #Instalando e iniciando docker
 sleep 4
