@@ -70,18 +70,18 @@ echo "Instalando Mysql"
 echo "..."
 sudo docker pull mysql:8
 sudo docker images
-sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=root" -e "MYSQL_ROOT_PASSWORD=#Gf42848080876" mysql:8
+sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:8
 
 sudo docker ps -a
 
 sleep 8
 echo "Acessando Banco de Dados"
-sudo docker exec -i noctuBD mysql -u root -p'#Gf42848080876' root < scriptConf.sql
+sudo docker exec -i noctuBD mysql -u aluno -p'aluno' root < scriptConf.sql
 
 # Verificando e executando o BD
 sleep 9
 echo "Iniciando Banco de Dados"
-sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'SHOW DATABASES;'"    
+sudo docker exec -it noctuBD bash -c "mysql -u aluno -p'aluno' -e 'SHOW DATABASES;'"    
 
 # Verificando se o banco foi criado corretamente
 if [ $? -eq 0 ]; then
@@ -89,7 +89,38 @@ if [ $? -eq 0 ]; then
     echo "Iniciando a aplicação Noct.u..."
     java -jar noctu-looca.jar
     # Conexão com Banco local
-    mysql -h 127.0.0.1 -P 3306 -u root -p'#Gf42848080876' -D root
+    # mysql -h 127.0.0.1 -P 3306 -u aluno -p aluno -D aluno sleep 6
+echo "..."
+echo "Instalando Mysql"
+echo "..."
+sudo docker pull mysql:8
+sudo docker images
+sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:8
+
+sudo docker ps -a
+
+sleep 8
+echo "Acessando Banco de Dados"
+sudo docker exec -i noctuBD mysql -u aluno -p'aluno' aluno < scriptConf.sql
+
+# Verificando e executando o BD
+sleep 9
+echo "Iniciando Banco de Dados"
+sudo docker exec -it noctuBD bash -c "mysql -u aluno -p'aluno' -e 'SHOW DATABASES;'"    
+
+# Verificando se o banco foi criado corretamente
+if [ $? -eq 0 ]; then
+    echo "Banco de dados criado com sucesso!"
+    echo "Iniciando a aplicação Noct.u..."
+    java -jar noctu-looca.jar
+    # Conexão com Banco local
+    mysql -h 127.0.0.1 -P 3306 -u aluno -p'aluno' -D aluno
+else
+    echo "Erro ao criar o banco de dados 'root'."
+    exit 1
+fi
+
+echo "Instalação concluida com sucesso!"
 else
     echo "Erro ao criar o banco de dados 'root'."
     exit 1
