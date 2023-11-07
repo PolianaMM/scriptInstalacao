@@ -81,7 +81,7 @@ sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'USE r
 # Verificando e executando o BD
 sleep 9
 echo "Iniciando Banco de Dados"
-sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'SHOW DATABASES;'"
+sudo docker exec -it noctuBD bash -c "mysql -u root -p'#Gf42848080876' -e 'SHOW DATABASES;'"    
 
 #Verificando se banco foi criado corretamente
 if [ $? -eq 0 ]; then

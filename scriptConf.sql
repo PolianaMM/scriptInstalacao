@@ -2,7 +2,6 @@
 
 echo "Iniciando configurações"
 
-# Criação das tabelas
 echo "Configurando banco de Dados"
 sudo docker exec -i noctuBD mysql -u root -p'#Gf42848080876' -e "CREATE TABLE empresa(
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
