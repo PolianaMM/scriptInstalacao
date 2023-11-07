@@ -68,12 +68,14 @@ sudo docker pull mysql:8
 sudo docker images
 sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:8
 sudo service mysql start
+
 sudo docker ps -a
 
 sleep 8
 echo "..."
 echo "Acessando Banco de Dados"  
 echo "..."
+sudo docker exec -i noctuBD mysql -u root -paluno -e "GRANT ALL PRIVILEGES ON *.* TO 'aluno'@'localhost'; FLUSH PRIVILEGES"
 sudo docker exec -i noctuBD mysql -u aluno -paluno aluno < scriptConf.sql
 
 # Verificando e executando o BD
@@ -81,7 +83,7 @@ sleep 9
 echo "..."
 echo "Iniciando Banco de Dados" 
 echo "..." 
-#sudo docker exec -it noctuBD bash -c "mysql -u aluno -paluno -e 'SHOW DATABASES;'"     
+sudo docker exec -it noctuBD bash -c "mysql -u aluno -paluno -e 'SHOW DATABASES;'"  
 
 # Verificando se o banco foi criado corretamente 
 if [ $? -eq 0 ]; then
