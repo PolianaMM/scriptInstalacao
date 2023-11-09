@@ -1,0 +1,17 @@
+parar o docker
+sudo docker stop "ID_DOCKER"
+
+excluir o docker
+sudo docker rm "ID_DOCKER"
+
+forçar exclusão
+sudo docker rm -f "ID_DOCKER"
+
+consultar portas
+sudo lsof -i :3306
+
+parar serviço
+sudo service mysql stop
+
+consultar docker 
+sudo docker ps -a
