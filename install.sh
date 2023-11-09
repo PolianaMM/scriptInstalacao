@@ -8,6 +8,7 @@
 #Baixando pacotes iniciais
 echo "..."
 echo "Olá usuário! Bem -vindo a Noct.u! Vamos iniciar nossa instalação!!"
+echo "Vamos iniciar nossa instalação!!"
 echo "..."
 sleep 1
 echo "..." 
