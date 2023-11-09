@@ -75,25 +75,14 @@ sleep 8
 echo "..."
 echo "Acessando Banco de Dados"  
 
-# erro:
-# mysql: [Warning] Using a password on the command line interface can be insecure.
-# ERROR 1410 (42000) at line 1: You are not allowed to create a user with GRANT
-# mysql: [Warning] Using a password on the command line interface can be insecure.
-# ERROR 1045 (28000): Access denied for user 'aluno'@'localhost' (using password: YES)
-
 echo "..."
-sudo docker exec -i noctuBD mysql -u aluno -paluno aluno < scriptConf.sql
+sudo docker exec -i noctuBD mysql -u aluno -p aluno aluno < scriptConf.sql
 
 # Verificando e executando o BD
 
 sleep 9
 echo "..."
 echo "Iniciando Banco de Dados" 
-
-# Erro:
-# mysql: [Warning] Using a password on the command line interface can be insecure.
-# ERROR 1045 (28000): Access denied for user 'aluno'@'localhost' (using password: YES)
-# Erro ao criar o banco de dados 'aluno'.
 
 echo "..." 
 sudo docker exec -it noctuBD bash -c "mysql -u aluno -paluno -e 'SHOW DATABASES;'"  

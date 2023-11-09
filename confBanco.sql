@@ -1,3 +1,8 @@
+CREATE USER 'aluno'@'localhost' IDENTIFIED BY 'aluno';
+GRANT ALL PRIVILEGES ON * . * TO 'aluno'@'localhost';
+
+CREATE DATABASE noctuBD;
+USE noctuBD;
 
 CREATE TABLE empresa(
 	idEmpresa INT PRIMARY KEY AUTO_INCREMENT,
@@ -108,4 +113,5 @@ CREATE TABLE captura (
     FOREIGN KEY (fkComponente) REFERENCES componente(idComponente)
 );
 
+SHOW TABLES;
 
