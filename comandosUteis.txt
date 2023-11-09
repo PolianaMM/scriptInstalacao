@@ -1,5 +1,5 @@
 parar o docker
-sudo docker stop "ID_DOCKER"
+sudo docker stop  "ID_DOCKER"
 
 excluir o docker
 sudo docker rm "ID_DOCKER"
@@ -15,3 +15,9 @@ sudo service mysql stop
 
 consultar docker 
 sudo docker ps -a
+
+verificar se banco está ativo
+sudo systemctl status mysql
+
+verificar se caminho está com permissão
+ls -l /var/run/mysqld/mysqld.sock
