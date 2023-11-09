@@ -73,7 +73,7 @@ else
 fi
 
 # Iniciando o serviço do MySQL no container
-if sudo service mysql start; then
+if sudo systemctl start mysql; then
     echo "Banco de dados iniciado com sucesso!"
 else
     echo "Erro ao iniciar o Banco de dados. Entre em contato com a equipe Noct.u."
