@@ -24,14 +24,8 @@ echo "..."
 # Mensagem sobre a criação do Docker
 sleep 5
 echo "..."
-echo "Criando Docker" 
-echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
-echo "..."
-
-# Verifica e instala o Docker
-sleep 5
-echo "..."
 echo "Instalando Docker..."
+echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."
 if sudo apt install docker.io -y; then
     echo "..."
@@ -78,13 +72,11 @@ fi
 
 #Criação do container Banco de Dados e instalação
 sleep 5
-
 echo "..."  
 echo "Instalando Mysql" 
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-
 if sudo docker pull mysql:8; then
     echo "..."
     echo "Docker image do MySQL 8 baixada com sucesso!"
@@ -109,6 +101,7 @@ else
     exit 1
 fi
 
+# Criando container
 sleep 5
 if sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:8; then
     echo "..."
@@ -147,7 +140,7 @@ else
     exit 1
 fi
 
-#Lista de containers assossiados
+#Verificar containers
 echo "..." 
 echo "Verificando se a instalação está funcionando"
 echo "..." 
@@ -187,12 +180,12 @@ else
 exit 1
 fi
 
+# Instalando java
 sleep 5
 echo "..."  
 echo "Instalando Java 17"  
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-
 if docker build -t java_17_image .; then
     echo "..."
     echo "Construção da imagem do Java 17 concluida!"
@@ -203,7 +196,6 @@ else
     echo "..."
     exit 1
 fi
-
 if sudo docker run -it --name containerJava java_17_image /bin/bash; then
     echo "..."
     echo "Container Java 17 iniciado com sucesso!"
@@ -223,11 +215,10 @@ echo "Logo inicializaremos a sua central de monitoramento"
 echo "..." 
 echo "Estamos instalando a aplicação"
 echo "..."
-
 if curl -LJO https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar; then
     if [ -f "noctu-looca.jar" ]; then
         echo "Arquivo noctu-looca.jar baixado e instalado com sucesso!"
-        # Executando a aplicação somente se o download do arquivo foi bem-sucedido
+        # Executando a aplicação somente se o download do arquivo der certo
         java -jar noctu-looca.jar
     else
         echo "..."
