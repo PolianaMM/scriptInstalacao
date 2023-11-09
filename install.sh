@@ -77,7 +77,7 @@ echo "Instalando Mysql"
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-if sudo docker pull mysql:8; then
+if sudo docker pull mysql:8/mysql-server; then
     echo "..."
     echo "Docker image do MySQL 8 baixada com sucesso!"
     echo "..."
