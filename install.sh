@@ -103,7 +103,7 @@ fi
 
 # Criando container
 sleep 5
-if sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" bancoDeDados; then
+if sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" bancodedados; then
     echo "..."
     echo "Container do Banco de Dados criado com sucesso!"
     echo "..."
@@ -129,7 +129,7 @@ fi
 
 # Iniciando o serviço MySQL dentro do contêiner
 sleep 5
-if sudo docker exec noctuBD service mysql start; then
+if sudo docker exec noctuBD /etc/init.d/mysql start; then
     echo "..."
     echo "Banco de dados iniciado com sucesso!"
     echo "..."
