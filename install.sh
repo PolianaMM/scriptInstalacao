@@ -97,7 +97,7 @@ echo "Instalando Mysql"
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-if sudo docker build -t bancodedados .; then
+if sudo docker build -t noctu/mysql . .; then
     echo "..."
     echo "Imagem do MySQL construída com sucesso!"
     echo "..."
@@ -110,7 +110,7 @@ fi
 
 # Verificar a existência da imagem baixada
 sleep 5
-if sudo docker images | grep -q "bancodedados"; then
+if sudo docker images | grep -q "noctu/mysql"; then
     echo "..."
     echo "Imagem do MySQL encontrada."
     echo "..."
@@ -149,7 +149,7 @@ fi
 
 # Iniciando o serviço MySQL dentro do contêiner
 sleep 5
-if sudo docker exec noctuBD /etc/init.d/mysqld start; then
+if sudo docker exec noctuBD service mysql start; then
     echo "..."
     echo "Banco de dados iniciado com sucesso!"
     echo "..."
