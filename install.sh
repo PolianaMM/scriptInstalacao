@@ -167,13 +167,25 @@ sleep 5
 echo "..."
 echo "Configurando Banco de Dados"  
 echo "..."
+
+if SQL_COMMAND="GRANT ALL PRIVILEGES ON $DATABASE.* TO '$USER'@'%' IDENTIFIED BY '$PASSWORD'; FLUSH PRIVILEGES;"; then
+    echo "..."
+    echo "Privilégios realizados!"
+    echo "..."
+else 
+    echo "..."
+    echo "Erro ao executar o script SQL."
+    echo "..."
+exit 1
+fi
+
 if sudo docker exec -i noctuBD mysql -u aluno -p < confBanco.sql; then
     echo "..."
     echo "Script SQL executado com sucesso no banco de dados!"
     echo "..."
 else
     echo "..."
-    echo "Erro ao executar o script SQL."
+    echo "Erro ao executar as permissões."
     echo "..."
 exit 1
 fi
