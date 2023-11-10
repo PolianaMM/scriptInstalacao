@@ -145,8 +145,7 @@ fi
 
 # Iniciando o serviço MySQL dentro do contêiner
 sleep 5
-#mysql -u aluno -p (adicionar depois do noctuBD se não der certo)
-if sudo docker exec noctuBD ;then
+if sudo docker exec noctuBD mysql  ;then
     echo "..."
     echo "Banco de dados iniciado com sucesso!"
     echo "..."
