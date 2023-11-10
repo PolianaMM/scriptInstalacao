@@ -1,3 +1,6 @@
+consultar docker 
+sudo docker ps -a
+
 parar o docker
 sudo docker stop  "ID_DOCKER"
 
@@ -12,9 +15,6 @@ sudo lsof -i :3306
 
 parar serviço
 sudo service mysql stop
-
-consultar docker 
-sudo docker ps -a
 
 verificar se banco está ativo
 sudo systemctl status mysql
