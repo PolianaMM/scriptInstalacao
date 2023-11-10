@@ -21,26 +21,6 @@ echo "..."
 echo "Pacotes atualizados!"
 echo "..."
 
-# Instalando java
-sleep 5
-echo "..."
-echo "Verificando se você possui o Java instalado na sua máquina!"
-echo "..."
-if ! command -v java &> /dev/null; then
-  echo "Java não está instalado."
-  read -p "Gostaria de instalar o Java versão 17? [s/n] " get
-  if [ "$get" == "s" ]; then
-    sudo apt install openjdk-17-jre -y
-  else
-    echo "Você escolheu não prosseguir. Por gentileza entre em contato com no equipe Noct.u."
-    exit 1
-  fi
-else
-  echo "..."
-  echo "Java Instalado com sucesso!"
-  echo "..."
-fi
-
 # Mensagem sobre a criação do Docker
 sleep 5
 echo "..."
@@ -97,7 +77,7 @@ echo "Instalando Mysql"
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-if sudo docker build -t noctu/mysql . .; then
+if sudo docker build -t bancodedados .; then
     echo "..."
     echo "Imagem do MySQL construída com sucesso!"
     echo "..."
@@ -110,7 +90,7 @@ fi
 
 # Verificar a existência da imagem baixada
 sleep 5
-if sudo docker images | grep -q "noctu/mysql"; then
+if sudo docker images | grep -q "bancodedados"; then
     echo "..."
     echo "Imagem do MySQL encontrada."
     echo "..."
@@ -149,7 +129,7 @@ fi
 
 # Iniciando o serviço MySQL dentro do contêiner
 sleep 5
-if sudo docker exec noctuBD service mysql start; then
+if sudo docker exec noctuBD /etc/init.d/mysqld start; then
     echo "..."
     echo "Banco de dados iniciado com sucesso!"
     echo "..."
