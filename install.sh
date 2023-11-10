@@ -77,20 +77,20 @@ echo "Instalando Mysql"
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-if sudo docker pull mysql:8/mysql-server; then
+if sudo docker build -t bancoDeDados -f ../dockerfileBanco/Dockerfile_mysql ..; then
     echo "..."
-    echo "Docker image do MySQL 8 baixada com sucesso!"
+    echo "Imagem do MySQL construída com sucesso!"
     echo "..."
 else
     echo "..."
-    echo "Erro ao baixar a imagem do MySQL. Entre em contato com a equipe Noct.u."
+    echo "Erro ao construir a imagem do MySQL. Entre em contato com a equipe Noct.u."
     echo "..."
     exit 1
 fi
 
 # Verificar a existência da imagem baixada
 sleep 5
-if sudo docker images | grep -q "mysql"; then
+if sudo docker images | grep -q "bancoDeDados"; then
     echo "..."
     echo "Imagem do MySQL 8 encontrada."
     echo "..."
@@ -128,17 +128,17 @@ else
 fi
 
 # Iniciando o serviço do MySQL no container
-sleep 5
-if sudo systemctl start mysql; then
-    echo "..."
-    echo "Banco de dados iniciado com sucesso!"
-    echo "..."
-else
-    echo "..."
-    echo "Erro ao iniciar o Banco de dados. Entre em contato com a equipe Noct.u."
-    echo "..."
-    exit 1
-fi
+# sleep 5
+# if sudo systemctl start mysql; then
+#     echo "..."
+#     echo "Banco de dados iniciado com sucesso!"
+#    echo "..."
+# else
+#     echo "..."
+#     echo "Erro ao iniciar o Banco de dados. Entre em contato com a equipe Noct.u."
+#     echo "..."
+#     exit 1
+# fi
 
 #Verificar containers
 echo "..." 
