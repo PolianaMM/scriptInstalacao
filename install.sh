@@ -186,7 +186,7 @@ echo "..."
 echo "Instalando Java 17"  
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-if docker build -t java_17_image .; then
+if sudo docker build -t java_17_image .; then
     echo "..."
     echo "Construção da imagem do Java 17 concluida!"
     echo "..."
