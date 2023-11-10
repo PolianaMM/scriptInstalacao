@@ -174,7 +174,7 @@ if SQL_COMMAND="GRANT ALL PRIVILEGES ON $DATABASE.* TO '$USER'@'%' IDENTIFIED BY
     echo "..."
 else 
     echo "..."
-    echo "Erro ao executar o script SQL."
+    echo "Erro ao executar as permissões."
     echo "..."
 exit 1
 fi
@@ -185,7 +185,7 @@ if sudo docker exec -i noctuBD mysql -u aluno -p < confBanco.sql; then
     echo "..."
 else
     echo "..."
-    echo "Erro ao executar as permissões."
+    echo "Erro ao executar o script SQL."
     echo "..."
 exit 1
 fi
