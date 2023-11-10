@@ -77,7 +77,7 @@ echo "Instalando Mysql"
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-if sudo docker build --network=host -t bancodedados -f ../dockerfileBanco/Dockerfile ..; then
+if sudo docker build --network=host -t bancodedados -f ../scriptInstalacao/dockerfileBanco/Dockerfile ..; then
     echo "..."
     echo "Imagem do MySQL construída com sucesso!"
     echo "..."
@@ -128,17 +128,17 @@ else
 fi
 
 # Iniciando o serviço do MySQL no container
-# sleep 5
-# if sudo systemctl start mysql; then
-#     echo "..."
-#     echo "Banco de dados iniciado com sucesso!"
-#    echo "..."
-# else
-#     echo "..."
-#     echo "Erro ao iniciar o Banco de dados. Entre em contato com a equipe Noct.u."
-#     echo "..."
-#     exit 1
-# fi
+ sleep 5
+ if sudo systemctl start mysql; then
+     echo "..."
+     echo "Banco de dados iniciado com sucesso!"
+    echo "..."
+ else
+     echo "..."
+     echo "Erro ao iniciar o Banco de dados. Entre em contato com a equipe Noct.u."
+     echo "..."
+     exit 1
+ fi
 
 #Verificar containers
 echo "..." 

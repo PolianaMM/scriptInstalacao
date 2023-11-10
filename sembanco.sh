@@ -86,7 +86,7 @@ else
     echo "..."
     exit 1
 fi
-if sudo docker run -it --name containerJava java_17_image /bin/bash; then
+if sudo docker run -it --name containerJava java_17_image ; then
     echo "..."
     echo "Container Java 17 iniciado com sucesso!"
     echo "..."
