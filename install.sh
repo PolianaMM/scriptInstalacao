@@ -21,6 +21,22 @@ echo "..."
 echo "Pacotes atualizados!"
 echo "..."
 
+#verificando e instalando java
+sleep 4
+echo "Verificando se você possui o Java instalado na sua máquina!"
+if which java > /dev/null 2>&1; then
+  echo "Java não está instalado."
+  read -p "Gostaria de instalar o OpenJDK-17? [s/n] " get
+  if [ "$get" == "s" ]; then
+    sudo apt install openjdk-17-jre -y
+  else
+    echo "Você escolheu não prosseguir. Por gentileza entre em contato com no equipe Noct.u."
+    exit 1
+  fi
+else
+  echo "Java Instalado com sucesso!"
+fi
+
 # Mensagem sobre a criação do Docker
 sleep 5
 echo "..."
@@ -129,7 +145,7 @@ fi
 
 # Iniciando o serviço MySQL dentro do contêiner
 sleep 5
-if sudo docker exec noctuBD /etc/init.d/mysqld start; then
+if sudo docker exec noctuBD service mysql start; then
     echo "..."
     echo "Banco de dados iniciado com sucesso!"
     echo "..."
