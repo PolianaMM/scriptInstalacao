@@ -129,7 +129,7 @@ fi
 
 # Iniciando o serviço MySQL dentro do contêiner
 sleep 5
-if sudo docker exec noctuBD /etc/init.d/mysql start; then
+if sudo docker exec noctuBD /etc/init.d/mysqld start; then
     echo "..."
     echo "Banco de dados iniciado com sucesso!"
     echo "..."
