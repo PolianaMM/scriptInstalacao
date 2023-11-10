@@ -77,7 +77,7 @@ echo "Instalando Mysql"
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-if sudo docker build -t bancoDeDados -f ../dockerfileBanco/Dockerfile_mysql ..; then
+if sudo docker build -t bancodedados -f ../dockerfileBanco/Dockerfile ..; then
     echo "..."
     echo "Imagem do MySQL construída com sucesso!"
     echo "..."
