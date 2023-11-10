@@ -77,7 +77,7 @@ echo "Instalando Mysql"
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-if sudo docker build -t bancoDeDados -f ../dockerfileBanco/Dockerfile ..; then
+if sudo docker build -t bancodedados -f ../dockerfileBanco/Dockerfile ..; then
     echo "..."
     echo "Imagem do MySQL construída com sucesso!"
     echo "..."
@@ -90,7 +90,7 @@ fi
 
 # Verificar a existência da imagem baixada
 sleep 5
-if sudo docker images | grep -q "bancoDeDados"; then
+if sudo docker images | grep -q "bancodedados"; then
     echo "..."
     echo "Imagem do MySQL encontrada."
     echo "..."
