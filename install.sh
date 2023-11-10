@@ -77,7 +77,7 @@ echo "Instalando Mysql"
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-if sudo docker build --network=host -t bancodedados -f ../noctu/scriptInstalacao/dockerfileBanco/Dockerfile ..; then
+if sudo docker build -t bancoDeDados -f ../dockerfileBanco/Dockerfile ..; then
     echo "..."
     echo "Imagem do MySQL construída com sucesso!"
     echo "..."
@@ -92,18 +92,18 @@ fi
 sleep 5
 if sudo docker images | grep -q "bancoDeDados"; then
     echo "..."
-    echo "Imagem do MySQL 8 encontrada."
+    echo "Imagem do MySQL encontrada."
     echo "..."
 else
     echo "..."
-    echo "Imagem do MySQL 8 não encontrada. Encerrando o script. Entre em contato com a equipe Noct.u."
+    echo "Imagem do MySQL não encontrada. Encerrando o script. Entre em contato com a equipe Noct.u."
     echo "..."
     exit 1
 fi
 
 # Criando container
 sleep 5
-if sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:8; then
+if sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" bancoDeDados; then
     echo "..."
     echo "Container do Banco de Dados criado com sucesso!"
     echo "..."
@@ -127,18 +127,18 @@ else
     exit 1
 fi
 
-# Iniciando o serviço do MySQL no container
- sleep 5
- if sudo systemctl start mysql; then
-     echo "..."
-     echo "Banco de dados iniciado com sucesso!"
+# Iniciando o serviço MySQL dentro do contêiner
+sleep 5
+if sudo docker exec noctuBD service mysql start; then
     echo "..."
- else
-     echo "..."
-     echo "Erro ao iniciar o Banco de dados. Entre em contato com a equipe Noct.u."
-     echo "..."
-     exit 1
- fi
+    echo "Banco de dados iniciado com sucesso!"
+    echo "..."
+else
+    echo "..."
+    echo "Erro ao iniciar o Banco de dados. Entre em contato com a equipe Noct.u."
+    echo "..."
+    exit 1
+fi
 
 #Verificar containers
 echo "..." 
