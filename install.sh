@@ -21,6 +21,26 @@ echo "..."
 echo "Pacotes atualizados!"
 echo "..."
 
+# Instalando java
+sleep 5
+echo "..."
+echo "Verificando se você possui o Java instalado na sua máquina!"
+echo "..."
+if ! command -v java &> /dev/null; then
+  echo "Java não está instalado."
+  read -p "Gostaria de instalar o Java versão 17? [s/n] " get
+  if [ "$get" == "s" ]; then
+    sudo apt install openjdk-17-jre -y
+  else
+    echo "Você escolheu não prosseguir. Por gentileza entre em contato com no equipe Noct.u."
+    exit 1
+  fi
+else
+  echo "..."
+  echo "Java Instalado com sucesso!"
+  echo "..."
+fi
+
 # Mensagem sobre a criação do Docker
 sleep 5
 echo "..."
@@ -178,26 +198,6 @@ else
     echo "Erro ao iniciar Banco de dados"
     echo "..."
 exit 1
-fi
-
-# Instalando java
-sleep 5
-echo "..."
-echo "Verificando se você possui o Java instalado na sua máquina!"
-echo "..."
-if ! command -v java &> /dev/null; then
-  echo "Java não está instalado."
-  read -p "Gostaria de instalar o Java versão 17? [s/n] " get
-  if [ "$get" == "s" ]; then
-    sudo apt install openjdk-17-jre -y
-  else
-    echo "Você escolheu não prosseguir. Por gentileza entre em contato com no equipe Noct.u."
-    exit 1
-  fi
-else
-  echo "..."
-  echo "Java Instalado com sucesso!"
-  echo "..."
 fi
 
 #Instalação do .jar
