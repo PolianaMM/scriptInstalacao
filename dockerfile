@@ -1,3 +1,11 @@
-FROM ubuntu:latest
 
-RUN apt-get update && apt-get install -y openjdk-17-jdk
+FROM mysql:8
+
+ENV MYSQL_DATABASE aluno
+ENV MYSQL_ROOT_PASSWORD aluno
+
+COPY ./dockerfile/ /docker-entrypoint-initdb.d/
+
+EXPOSE 3306
+
+CMD ["mysqld"]

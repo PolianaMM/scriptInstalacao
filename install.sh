@@ -77,7 +77,7 @@ echo "Instalando Mysql"
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-if sudo docker build -t bancodedados -f ../dockerfileBanco/Dockerfile ..; then
+if sudo docker build -t bancodedados .; then
     echo "..."
     echo "Imagem do MySQL construída com sucesso!"
     echo "..."
@@ -182,29 +182,22 @@ fi
 
 # Instalando java
 sleep 5
-echo "..."  
-echo "Instalando Java 17"  
-echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
-echo "..."  
-if sudo docker build -t java_17_image .; then
-    echo "..."
-    echo "Construção da imagem do Java 17 concluida!"
-    echo "..."
-else
-    echo "..."
-    echo "Erro durante a construção da imagem do Java 17. Entre em contato com a equipe Noct.u"
-    echo "..."
+echo "..."
+echo "Verificando se você possui o Java instalado na sua máquina!"
+echo "..."
+if ! command -v java &> /dev/null; then
+  echo "Java não está instalado."
+  read -p "Gostaria de instalar o Java versão 17? [s/n] " get
+  if [ "$get" == "s" ]; then
+    sudo apt install openjdk-17-jre -y
+  else
+    echo "Você escolheu não prosseguir. Por gentileza entre em contato com no equipe Noct.u."
     exit 1
-fi
-if sudo docker run -it --name containerJava java_17_image /bin/bash; then
-    echo "..."
-    echo "Container Java 17 iniciado com sucesso!"
-    echo "..."
+  fi
 else
-    echo "..."
-    echo "Erro ao iniciar o container do Java 17. Entre em contato com a equipe Noct.u."
-    echo "..."
-    exit 1
+  echo "..."
+  echo "Java Instalado com sucesso!"
+  echo "..."
 fi
 
 #Instalação do .jar
