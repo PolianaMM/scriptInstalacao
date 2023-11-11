@@ -102,9 +102,9 @@ sudo systemctl enable mysql
 echo "..."
 echo "Instalando aplicações finalizadas!"
 echo "..."
-if sudo docker exec -i Noctu mysql -u root -pnoctu noctuBD < confBanco.sql &&
+if sudo docker exec -i Noctu mysql -u root -p noctu noctuBD < confBanco.sql &&
    sudo apt install mysql-client -y &&
-   mysql -u root -pnoctu -h 127.0.0.1 -P 3306 noctuBD < confBanco.sql; then
+   mysql -u root -p noctu -h 127.0.0.1 -P 3306 noctuBD < confBanco.sql; then
     echo "..."
     echo "Script SQL executado com sucesso no banco de dados!"
     echo "..."
