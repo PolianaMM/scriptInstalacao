@@ -96,9 +96,11 @@ sudo systemctl start mysql
 if sudo docker exec -i noctuBD mysql -u aluno -paluno Noct.u < confBanco.sql &&
    sudo apt install mysql-client -y &&
    mysql -u root -paluno -h 127.0.0.1 -P 3306 Noct.u < confBanco.sql; then
+    echo "..."
     echo "Script SQL executado com sucesso no banco de dados!"
     echo "..."
 else
+    echo "..."
     echo "Erro ao executar o script SQL."
     echo "..."
     exit 1
