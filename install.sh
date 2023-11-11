@@ -92,10 +92,16 @@ fi
 
 # Executando container banco de Dados e instalando script do banco
 sleep 5
+echo "..."
+echo "Instalando aplicações complementares"
+echo "..."
 sudo apt update -y
 sudo apt install mysql-server -y
 sudo systemctl start mysql
 sudo systemctl enable mysql
+echo "..."
+echo "Instalando aplicações finalizadas!"
+echo "..."
 if sudo docker exec -i Noctu mysql -u root -pnoctu noctuBD < confBanco.sql &&
    sudo apt install mysql-client -y &&
    mysql -u root -pnoctu -h 127.0.0.1 -P 3306 noctuBD < confBanco.sql; then

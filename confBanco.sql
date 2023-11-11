@@ -1,4 +1,4 @@
-CREATE DATABASE noctuBD;
+
 USE noctuBD;
 
 CREATE TABLE empresa(
