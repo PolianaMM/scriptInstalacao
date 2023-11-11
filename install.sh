@@ -78,10 +78,8 @@ echo "Aguarde um instante enquanto fazemos as configurações..."
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
 sudo docker pull mysql:latest
-
-# Criando container
 sleep 5
-if sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:latest ; then
+if sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:latest; then
     echo "..."
     echo "Container do Banco de Dados criado com sucesso!"
     echo "..."
@@ -92,23 +90,19 @@ else
     exit 1
 fi
 
-# Executando container banco de Dados 
+# Executando container banco de Dados e instalando script do banco
 sleep 5
-if sudo docker exec -i noctuBD mysql -u aluno -paluno Noct.u < confBanco.sql; then
-    sudo apt install mysql-client -y
-    mysql -u root -paluno -h 127.0.0.1 -P 3306 Noct.u < confBanco.sql
-    echo "..."
+
+if sudo docker exec -i noctuBD mysql -u aluno -paluno Noct.u < confBanco.sql &&
+   sudo apt install mysql-client -y &&
+   mysql -u root -paluno -h 127.0.0.1 -P 3306 Noct.u < confBanco.sql; then
     echo "Script SQL executado com sucesso no banco de dados!"
     echo "..."
 else
-    echo "..."
     echo "Erro ao executar o script SQL."
     echo "..."
-exit 1
+    exit 1
 fi
-
-# Conexão com Banco local
-# mysql -h 127.0.0.1 -P 3306 -u aluno -p aluno -D aluno  
 
 # Verificando e executando o Banco de Dados
 sleep 5
