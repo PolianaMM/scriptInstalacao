@@ -1,7 +1,3 @@
-CREATE USER 'aluno'@'localhost' IDENTIFIED BY 'aluno';
-GRANT ALL PRIVILEGES ON * . * TO 'aluno'@'localhost';
-FLUSH PRIVILEGES;
-
 CREATE DATABASE noctuBD;
 USE noctuBD;
 

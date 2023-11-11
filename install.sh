@@ -93,33 +93,11 @@ echo "Instalando Mysql"
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-if sudo docker build -t bancodedados .; then
-    echo "..."
-    echo "Imagem do MySQL construída com sucesso!"
-    echo "..."
-else
-    echo "..."
-    echo "Erro ao construir a imagem do MySQL. Entre em contato com a equipe Noct.u."
-    echo "..."
-    exit 1
-fi
-
-# Verificar a existência da imagem baixada
-sleep 5
-if sudo docker images | grep -q "bancodedados"; then
-    echo "..."
-    echo "Imagem do MySQL encontrada."
-    echo "..."
-else
-    echo "..."
-    echo "Imagem do MySQL não encontrada. Encerrando o script. Entre em contato com a equipe Noct.u."
-    echo "..."
-    exit 1
-fi
+sudo docker pull mysql:8
 
 # Criando container
 sleep 5
-if sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" bancodedados ; then
+if sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:8 ; then
     echo "..."
     echo "Container do Banco de Dados criado com sucesso!"
     echo "..."
@@ -130,37 +108,20 @@ else
     exit 1
 fi
 
-# Verificando se o container está em execução
+# Executando container banco de Dados 
 sleep 5
-if sudo docker ps -a | grep -q "noctuBD"; then
+if sudo docker exec -i noctuBD mysql -u aluno -p aluno Noct.u < confBanco.sql; then
+    sudo apt install mysql-client -y
+    mysql -u root -p aluno -h 127.0.0.1 -P 3306 Noct.u < confBanco.sql
     echo "..."
-    echo "Container do Banco de Dados está em execução."
+    echo "Script SQL executado com sucesso no banco de dados!"
     echo "..."
 else
     echo "..."
-    echo "Erro ao iniciar o container do Banco de dados. Entre em contato com a equipe Noct.u."
+    echo "Erro ao executar o script SQL."
     echo "..."
-    exit 1
+exit 1
 fi
-
-# Iniciando o serviço MySQL dentro do contêiner
-# sleep 5
-# if sudo docker exec noctuBD mysql  ;then
-#     echo "..."
-#     echo "Banco de dados iniciado com sucesso!"
-#     echo "..."
-# else
-#     echo "..."
-#     echo "Erro ao iniciar o Banco de dados. Entre em contato com a equipe Noct.u."
-#     echo "..."
-#     exit 1
-# fi
-
-#Verificar containers
-# echo "..." 
-# echo "Verificando se a instalação está funcionando"
-# echo "..." 
-# sudo docker ps -a
 
 #Importando o script .sql para container do banco
 sleep 5
@@ -179,16 +140,7 @@ else
 exit 1
 fi
 
-if sudo docker exec -i noctuBD mysql -u aluno -p < confBanco.sql; then
-    echo "..."
-    echo "Script SQL executado com sucesso no banco de dados!"
-    echo "..."
-else
-    echo "..."
-    echo "Erro ao executar o script SQL."
-    echo "..."
-exit 1
-fi
+
 # Conexão com Banco local
 # mysql -h 127.0.0.1 -P 3306 -u aluno -p aluno -D aluno  
 
