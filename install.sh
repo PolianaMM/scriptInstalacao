@@ -21,22 +21,6 @@ echo "..."
 echo "Pacotes atualizados!"
 echo "..."
 
-#verificando e instalando java
-sleep 4
-echo "Verificando se você possui o Java instalado na sua máquina!"
-if which java > /dev/null 2>&1; then
-  echo "Java não está instalado."
-  read -p "Gostaria de instalar o OpenJDK-17? [s/n] " get
-  if [ "$get" == "s" ]; then
-    sudo apt install openjdk-17-jre -y
-  else
-    echo "Você escolheu não prosseguir. Por gentileza entre em contato com no equipe Noct.u."
-    exit 1
-  fi
-else
-  echo "Java Instalado com sucesso!"
-fi
-
 # Mensagem sobre a criação do Docker
 sleep 5
 echo "..."
@@ -93,11 +77,11 @@ echo "Instalando Mysql"
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-sudo docker pull mysql:8
+sudo docker pull mysql:latest
 
 # Criando container
 sleep 5
-if sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:8 ; then
+if sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:latest ; then
     echo "..."
     echo "Container do Banco de Dados criado com sucesso!"
     echo "..."
@@ -110,9 +94,9 @@ fi
 
 # Executando container banco de Dados 
 sleep 5
-if sudo docker exec -i noctuBD mysql -u aluno -p aluno Noct.u < confBanco.sql; then
+if sudo docker exec -i noctuBD mysql -u aluno -paluno Noct.u < confBanco.sql; then
     sudo apt install mysql-client -y
-    mysql -u root -p aluno -h 127.0.0.1 -P 3306 Noct.u < confBanco.sql
+    mysql -u root -paluno -h 127.0.0.1 -P 3306 Noct.u < confBanco.sql
     echo "..."
     echo "Script SQL executado com sucesso no banco de dados!"
     echo "..."
@@ -122,24 +106,6 @@ else
     echo "..."
 exit 1
 fi
-
-#Importando o script .sql para container do banco
-sleep 5
-echo "..."
-echo "Configurando Banco de Dados"  
-echo "..."
-
-if SQL_COMMAND="GRANT ALL PRIVILEGES ON $DATABASE.* TO '$USER'@'%' IDENTIFIED BY '$PASSWORD'; FLUSH PRIVILEGES;"; then
-    echo "..."
-    echo "Privilégios realizados!"
-    echo "..."
-else 
-    echo "..."
-    echo "Erro ao executar as permissões."
-    echo "..."
-exit 1
-fi
-
 
 # Conexão com Banco local
 # mysql -h 127.0.0.1 -P 3306 -u aluno -p aluno -D aluno  
@@ -158,6 +124,33 @@ else
     echo "Erro ao iniciar Banco de dados"
     echo "..."
 exit 1
+fi
+
+#verificando e instalando java
+sleep 4
+echo "..."
+echo "Verificando se você possui o Java instalado na sua máquina!"
+echo "..."
+if which java > /dev/null 2>&1; then
+  echo "..."
+  echo "Java não está instalado."
+  echo "..."
+  read -p "Gostaria de instalar o OpenJDK-17? [s/n] " get
+  if [ "$get" == "s" ]; then
+    sudo apt install openjdk-17-jre -y
+    echo "..."
+    echo "Java Instalado com sucesso!"
+    echo "..."
+  else
+    echo "..."
+    echo "Você escolheu não prosseguir. Por gentileza entre em contato com no equipe Noct.u."
+    echo "..."
+    exit 1
+  fi
+else
+  echo "..."
+  echo "Java já Instalado!"
+  echo "..."
 fi
 
 #Instalação do .jar

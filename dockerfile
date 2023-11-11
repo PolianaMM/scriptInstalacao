@@ -1,5 +1,5 @@
 
-FROM mysql:8
+FROM mysql:latest
 
 ENV MYSQL_USER=root
 ENV MYSQL_DATABASE=aluno
