@@ -79,7 +79,7 @@ echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
 sudo docker pull mysql:latest
 sleep 5
-if sudo docker run -d -p 3306:3306 --name noctuBD -e "MYSQL_DATABASE=aluno" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:latest; then
+if sudo docker run -d -p 3306:3306 --name Noctu -e "MYSQL_DATABASE=noctuBD" -e "MYSQL_ROOT_PASSWORD=noctu" mysql:latest; then
     echo "..."
     echo "Container do Banco de Dados criado com sucesso!"
     echo "..."
