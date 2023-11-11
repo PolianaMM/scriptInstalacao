@@ -15,15 +15,6 @@ show_message "Vamos iniciar verificando se você possui o Docker instalado..."
 sleep 10
 
 # Verifica se o Docker já está instalado
-if ! command -v docker &> /dev/null; then
-    show_message "Você ainda não possui o Docker instalado."
-    echo "Deseja instalar o Docker (S/N)?"
-    read inst
-    if [ "$inst" == "S" ]; then
-        show_message "Ok! Você escolheu instalar o Docker."
-        show_message "Adicionando o repositório!"
-        sleep 10
-
         # Instalação do Docker
         sudo apt update -y
         sudo apt install docker.io -y
@@ -57,11 +48,6 @@ if ! command -v docker &> /dev/null; then
         else
             show_message "Você optou por não instalar o Docker neste momento. Até a próxima!"
         fi
-    else
-        show_message "Você optou por não instalar o Docker neste momento. Até a próxima!"
-    fi
-else
-    show_message "Você já possui o Docker instalado!"
 fi
 
 show_message "Agora iremos verificar se você já possui o Java instalado, aguarde um instante..."
