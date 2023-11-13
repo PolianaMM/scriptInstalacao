@@ -89,7 +89,7 @@ CREATE TABLE computador(
     numeroSerie VARCHAR(45),
     fkEmpresa INT,
     fkModeloComputador INT,
-    FOREIGN KEY (fkEmpresa) REFERENCES Empresa(idEmpresa),
+    FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa),
     FOREIGN KEY (fkModeloComputador) REFERENCES modeloComputador(idModeloComputador)
 );
 
