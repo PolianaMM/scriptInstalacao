@@ -178,21 +178,22 @@ fi
 sleep 5
 echo "..."
 echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Aplicações finalizadas!"
-echo "..."
+echo "..."v 
+
 
 #executando Docker
-sleep 15
-if sudo docker exec -i Noctu mysql -u root -paluno < /home/ubuntu/scriptInstalacao/confBanco.sql; then
-    echo "..."
-    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Docker Noct.u executado com sucesso!"
-    echo "..."
-else
-    echo "..."
-    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro ao executar o docker."
-    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = docker exec -it Noctu mysql -u aluno -paluno <caminhoScript"
-    echo "..."
-    exit 1
-fi
+#sleep 15
+#if sudo docker exec -i Noctu mysql -u root -paluno < /home/ubuntu/scriptInstalacao/confBanco.sql; then
+#    echo "..."
+#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Docker Noct.u executado com sucesso!"
+#    echo "..."
+#else
+#    echo "..."
+#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro ao executar o docker."
+#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = docker exec -it Noctu mysql -u aluno -paluno <caminhoScript"
+#    echo "..."
+#    exit 1
+#fi
  
 # execução do script
 sleep 5
