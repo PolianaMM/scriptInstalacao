@@ -1,3 +1,7 @@
+CREATE USER 'root'@'localhost' IDENTIFIED BY 'noctu';
+GRANT ALL PRIVILEGES ON seu_banco_de_dados.* TO 'seu_usuario'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
 USE noctuBD;
 
 CREATE TABLE empresa(
