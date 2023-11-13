@@ -1,3 +1,7 @@
+CREATE USER 'aluno'@'localhost' IDENTIFIED BY 'aluno';
+GRANT ALL PRIVILEGES ON *.* TO 'aluno'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
 USE noctuBD;
 
 CREATE TABLE empresa(
