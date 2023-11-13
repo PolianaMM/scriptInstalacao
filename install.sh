@@ -182,32 +182,32 @@ echo "..."v
 
 
 #executando Docker
-#sleep 15
-#if sudo docker exec -i Noctu mysql -u root -paluno < /home/ubuntu/scriptInstalacao/confBanco.sql; then
-#    echo "..."
-#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Docker Noct.u executado com sucesso!"
-#    echo "..."
-#else
-#    echo "..."
-#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro ao executar o docker."
-#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = docker exec -it Noctu mysql -u aluno -paluno <caminhoScript"
-#    echo "..."
-#    exit 1
-#fi
- 
-# execução do script
-sleep 5
-if mysql -u root -paluno -h 127.0.0.1 -P 3306 < /home/ubuntu/scriptInstalacao/confBanco.sql; then
+sleep 15
+if sudo docker exec -i Noctu mysql -u root -paluno < /home/ubuntu/scriptInstalacao/confBanco.sql; then
     echo "..."
-    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Script SQL executado com sucesso!"
+    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Docker Noct.u executado com sucesso!"
     echo "..."
 else
     echo "..."
-    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro ao executar o script SQL."
-    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = mysql -u XX -pXX -h host -P 3306 </caminhoScript"
+    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro ao executar o docker."
+    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = docker exec -it Noctu mysql -u aluno -paluno <caminhoScript"
     echo "..."
     exit 1
 fi
+ 
+# execução do script
+#sleep 5
+#if mysql -u root -paluno -h 127.0.0.1 -P 3306 < /home/ubuntu/scriptInstalacao/confBanco.sql; then
+#    echo "..."
+#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Script SQL executado com sucesso!"
+#    echo "..."
+#else
+#    echo "..."
+#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro ao executar o script SQL."
+#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = mysql -u XX -pXX -h host -P 3306 </caminhoScript"
+#    echo "..."
+#    exit 1
+#fi
 
 # Executando o Banco de Dados
  sleep 5
