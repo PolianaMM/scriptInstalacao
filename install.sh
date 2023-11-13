@@ -16,11 +16,17 @@ echo "..."
 echo "Atualizando e baixando pacotes do programa!" 
 echo "Aguarde um momento"
 echo "..." 
-sudo apt update -y && sudo apt upgrade -y
-sleep 5
-echo "..."
-echo "Pacotes atualizados!"
-echo "..."
+if sudo apt update -y && sudo apt upgrade -y; then
+   echo "..."
+    echo "Pacotes atualizados!"
+    echo "..."
+else
+    echo "..."
+    echo "Erro ao instalar o Docker."
+    echo "Entre em contato com a equipe Noct.u e informe o comando = update e upgrade "
+    echo "..."
+    exit 1
+fi
 
 # Sudo com criação do Docker
 sleep 5
@@ -35,11 +41,12 @@ if sudo apt install docker.io -y; then
 else
     echo "..."
     echo "Erro ao instalar o Docker."
+    echo "Entre em contato com a equipe Noct.u e informe o comando = install docker.io"
     echo "..."
     exit 1
 fi
 
-# Sudo niciando o Docker
+# Sudo iniciando o Docker
 sleep 5
 echo "..."
 echo "Iniciando Docker"
@@ -51,6 +58,7 @@ if sudo systemctl start docker; then
 else
     echo "..."
     echo "Erro ao iniciar o Docker."
+    echo "Entre em contato com a equipe Noct.u e informe o comando = start docker"
     echo "..."
     exit 1
 fi
@@ -67,43 +75,92 @@ if sudo systemctl enable docker; then
 else
     echo "..."
     echo "Erro ao habilitar o Docker."
+    echo "Entre em contato com a equipe Noct.u e informe o comando = enable docker"
     echo "..."
     exit 1
 fi
 
-#Sudo com instalação do Mysql e Criação do container Banco de Dados
+#baixando imagem mysql com pull
 sleep 5
 echo "..."  
 echo "Instalando Mysql" 
 echo "Aguarde um instante enquanto fazemos as configurações..." 
 echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
-sudo docker pull mysql:latest
+if sudo docker pull mysql:latest; then
+    echo "..."
+    echo "Imagem carregada com sucesso!"
+    echo "..."
+else 
+    echo "..."
+    echo "Erro ao criar o container do Banco de dados."
+    echo "Entre em contato com a equipe Noct.u e informe o comando = docker pull mysql:latest"
+    echo "..."
+
 sleep 5
 
+#Criando container do Banco de Dados
 if sudo docker run -d -p 3306:3306 --name Noctu -e "MYSQL_DATABASE=noctuBD" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:latest; then
     echo "..."
     echo "Container do Banco de Dados criado com sucesso!"
     echo "..."
 else
     echo "..."
-    echo "Erro ao criar o container do Banco de dados. Entre em contato com a equipe Noct.u."
+    echo "Erro ao criar o container do Banco de dados."
+    echo "Entre em contato com a equipe Noct.u e informe o comando = docker run -d -p 3306:3306 --name Noctu -e "MYSQL_DATABASE=XX" -e "MYSQL_ROOT_PASSWORD=XX" mysql:latest"
     echo "..."
     exit 1
 fi
 
-#Sudo fazendo instalação complementar do Banco de dados e instalando script do banco, e executando container banco de Dados com conexão local
+#Atualizando VM
 sleep 5
 echo "..."
 echo "Instalando aplicações complementares"
 echo "..."
-sudo apt update -y
+if sudo apt update -y; then
+    echo "..."
+    echo "Atualização realizada!"
+    echo "..."
+else
+    echo "..."
+    echo "Erro fazer atualização."
+    echo "Entre em contato com a equipe NOct.u e informe o comando = update"
+    echo "..."
+    exit 1
+fi
+
+#Iniciando mysql
 # sudo apt install mysql-server -y
-sudo systemctl start mysql
-sudo systemctl enable mysql
+if sudo systemctl start mysql; then
+    echo "..."
+    echo "MySQL iniciado!"
+    echo "..."
+else
+    echo "..."
+    echo "Erro iniciar MySQL."
+    echo "Entre em contato com a equipe NOct.u e informe o comando = start mysql"
+    echo "..."
+    exit 1
+fi
+
+# habilitando mysql
+if sudo systemctl enable mysql; then
+    echo "..."
+    echo "MySQL Habilitado!"
+    echo "..."
+else
+    echo "..."
+    echo "Erro habilitar MySQL."
+    echo "Entre em contato com a equipe NOct.u e informe o comando = enable mysql"
+    echo "..."
+    exit 1
+fi
+
 echo "..."
 echo "Instalando aplicações finalizadas!"
 echo "..."
+
+#executando Docker
 if sudo docker exec -it Noctu mysql -u aluno -paluno </home/ubuntu/scriptInstalacao/confBanco.sql; then
     echo "..."
     echo "Docker Noct.u executado com sucesso!"
@@ -111,27 +168,25 @@ if sudo docker exec -it Noctu mysql -u aluno -paluno </home/ubuntu/scriptInstala
 else
     echo "..."
     echo "Erro ao executar o docker."
-    echo "1º linha de execução com caminho do script. sudo docker exec -it Noctu mysql -u aluno -paluno<caminho"
-    echo "Entre em contato com a equipe NOct.u"
+    echo "Entre em contato com a equipe NOct.u e informe o comando = docker exec -it Noctu mysql -u aluno -paluno <caminhoScript"
     echo "..."
     exit 1
 fi
  
- if mysql -u aluno -paluno -h 127.0.0.1 -P 3306 </home/ubuntu/scriptInstalacao/confBanco.sql; then
+# execução do script
+if mysql -u aluno -paluno -h 127.0.0.1 -P 3306 </home/ubuntu/scriptInstalacao/confBanco.sql; then
     echo "..."
-    echo "mysql-client instalado com sucesso!"
+    echo "Script SQL executado com sucesso!"
     echo "..."
 else
     echo "..."
-    echo "Erro ao executar o script SQL. mysql -u aluno -paluno -h 127.0.0.1 -P 3306 <caminho"
-    echo "2º linha de execução com caminho do script."
-    echo "Entre em contato com a equipe NOct.u"
+    echo "Erro ao executar o script SQL."
+    echo "Entre em contato com a equipe NOct.u e informe o comando = mysql -u XX -pXX -h host -P 3306 </caminhoScript"
     echo "..."
     exit 1
 fi
 
-
-# Sudo verificando e executando o Banco de Dados
+# Executando o Banco de Dados
  sleep 5
  echo "..."
  echo "Iniciando Banco de Dados" 
@@ -143,11 +198,12 @@ fi
  else
      echo "..."
      echo "Erro ao iniciar Banco de dados"
+     echo "Entre em contato com a equipe NOct.u e informe o comando = docker exec noctuBD service mysql start"
      echo "..."
  exit 1
  fi
 
-#Sudo verificando e instalando java 17
+# verificando e instalando java 17
 sleep 4
 echo "..."
 echo "Verificando se você possui o Java instalado na sua máquina!"
@@ -174,7 +230,7 @@ else
   echo "..."
 fi
 
-#Sudo com instalação e instalação do .jar
+#instalação e instalação do .jar
 sleep 5
 echo "..."
 echo "Instalando aplicação Noct.u"
@@ -195,7 +251,8 @@ if curl -LJO https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_
     fi
 else
     echo "..."
-    echo "Erro ao baixar o arquivo noctu-looca.jar. Entre em contato com a equipe Noct.u"
+    echo "Erro ao baixar o arquivo noctu-looca.jar."
+     echo "Entre em contato com a equipe NOct.u e informe o comando = curl -LJO https://link.jar"
     echo "..."
     exit 1
 fi
