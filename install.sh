@@ -103,9 +103,9 @@ sudo systemctl enable mysql
 echo "..."
 echo "Instalando aplicações finalizadas!"
 echo "..."
-if sudo docker exec -i Noctu mysql -u aluno -paluno </home/ubuntu/scriptInstalacao/confBanco.sql &&
+if sudo docker exec -i Noctu mysql -u aluno -paluno </docker-entrypoint-initdb.d/confBanco.sql &&
    sudo apt install mysql-client -y &&
-   sudo mysql -u aluno -paluno -h 127.0.0.1 -P 3306 </home/ubuntu/scriptInstalacao/confBanco.sql; then
+   sudo mysql -u aluno -paluno -h 127.0.0.1 -P 3306 </docker-entrypoint-initdb.d/confBanco.sql; then
     echo "..."
     echo "Script SQL executado com sucesso no banco de dados!"
     echo "..."
@@ -117,20 +117,20 @@ else
 fi
 
 # Sudo verificando e executando o Banco de Dados
-# sleep 5
-# echo "..."
-# echo "Iniciando Banco de Dados" 
-# echo "..."
-# if sudo docker exec noctuBD service mysql start; then
-#     echo "..."
-#     echo "Banco de Dados Iniciado com sucesso!"
-#     echo "..."
-# else
-#     echo "..."
-#     echo "Erro ao iniciar Banco de dados"
-#     echo "..."
-# exit 1
-# fi
+ sleep 5
+ echo "..."
+ echo "Iniciando Banco de Dados" 
+ echo "..."
+ if sudo docker exec noctuBD service mysql start; then
+    echo "..."
+    echo "Banco de Dados Iniciado com sucesso!"
+    echo "..."
+ else
+     echo "..."
+     echo "Erro ao iniciar Banco de dados"
+     echo "..."
+ exit 1
+ fi
 
 #Sudo verificando e instalando java 17
 sleep 4
