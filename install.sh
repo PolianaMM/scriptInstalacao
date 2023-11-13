@@ -1,11 +1,12 @@
 #Antes de executar o script baixar o git (sudo apt install git)
 #Fazer git clone do repositório do script (git clone *link_repositório*)
+#Entra na pasta onde estão os arquivos utilizando cd nomeDaPasta
 #Dar permissão ao script e ao sql para executa-lo (chmod +x install.sh / chmod +x confBanco.sh)
 #Executar script (./install.sh)
 
 #!/bin/bash
 
-#Baixando pacotes iniciais
+#Sudo instalando e atualizando pacotes iniciais da VM
 echo "..."
 echo "Olá usuário! Bem -vindo a Noct.u! Vamos iniciar nossa instalação!!"
 echo "Vamos iniciar nossa instalação!!"
@@ -21,7 +22,7 @@ echo "..."
 echo "Pacotes atualizados!"
 echo "..."
 
-# Mensagem sobre a criação do Docker
+# Sudo com criação do Docker
 sleep 5
 echo "..."
 echo "Instalando Docker..."
@@ -38,7 +39,7 @@ else
     exit 1
 fi
 
-# Iniciando o Docker
+# Sudo niciando o Docker
 sleep 5
 echo "..."
 echo "Iniciando Docker"
@@ -54,7 +55,7 @@ else
     exit 1
 fi
 
-# Habilita o Docker
+# Sudo habilitando o Docker
 sleep 5
 echo "..."
 echo "Habilitando Docker"
@@ -70,7 +71,7 @@ else
     exit 1
 fi
 
-#Criação do container Banco de Dados e instalação
+#Sudo com instalação do Mysql e Criação do container Banco de Dados
 sleep 5
 echo "..."  
 echo "Instalando Mysql" 
@@ -90,7 +91,7 @@ else
     exit 1
 fi
 
-# Executando container banco de Dados e instalando script do banco
+#Sudo fazendo instalação complementar do Banco de dados e instalando script do banco, e executando container banco de Dados com conexão local
 sleep 5
 echo "..."
 echo "Instalando aplicações complementares"
@@ -115,23 +116,23 @@ else
     exit 1
 fi
 
-# Verificando e executando o Banco de Dados
-sleep 5
-echo "..."
-echo "Iniciando Banco de Dados" 
-echo "..."
-if sudo docker exec noctuBD service mysql start; then
-    echo "..."
-    echo "Banco de Dados Iniciado com sucesso!"
-    echo "..."
-else
-    echo "..."
-    echo "Erro ao iniciar Banco de dados"
-    echo "..."
-exit 1
-fi
+# Sudo verificando e executando o Banco de Dados
+# sleep 5
+# echo "..."
+# echo "Iniciando Banco de Dados" 
+# echo "..."
+# if sudo docker exec noctuBD service mysql start; then
+#     echo "..."
+#     echo "Banco de Dados Iniciado com sucesso!"
+#     echo "..."
+# else
+#     echo "..."
+#     echo "Erro ao iniciar Banco de dados"
+#     echo "..."
+# exit 1
+# fi
 
-#verificando e instalando java
+#Sudo verificando e instalando java 17
 sleep 4
 echo "..."
 echo "Verificando se você possui o Java instalado na sua máquina!"
@@ -140,7 +141,7 @@ if which java > /dev/null 2>&1; then
   echo "..."
   echo "Java não está instalado."
   echo "..."
-  read -p "Gostaria de instalar o OpenJDK-17? [s/n] " get
+  read -p "Gostaria de instalar o Java versão 17? [s/n] " get
   if [ "$get" == "s" ]; then
     sudo apt install openjdk-17-jre -y
     echo "..."
@@ -158,7 +159,7 @@ else
   echo "..."
 fi
 
-#Instalação do .jar
+#Sudo com instalação e instalação do .jar
 sleep 5
 echo "..."
 echo "Instalando aplicação Noct.u"
