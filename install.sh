@@ -70,7 +70,7 @@ fi
 # Sudo habilitando o Docker
 sleep 5
 echo "..."
-echo "Habilitando Docker"
+echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7)  Habilitando Docker"
 echo "..."
 if sudo systemctl enable docker; then
     echo "..."
@@ -178,7 +178,7 @@ fi
 sleep 5
 echo "..."
 echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Aplicações finalizadas!"
-echo "..."v 
+echo "..."
 
 
 #executando Docker
@@ -210,9 +210,9 @@ fi
 #fi
 
 # Executando o Banco de Dados
- sleep 5
+ sleep 15
  echo "..."
- echo "Iniciando Banco de Dados" 
+ echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Iniciando Banco de Dados" 
  echo "..."
  if sudo docker exec noctuBD service mysql start; then
     echo "..."
