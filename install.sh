@@ -80,6 +80,7 @@ echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
 sudo docker pull mysql:latest
 sleep 5
+
 if sudo docker run -d -p 3306:3306 --name Noctu -e "MYSQL_DATABASE=noctuBD" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:latest; then
     echo "..."
     echo "Container do Banco de Dados criado com sucesso!"
@@ -97,23 +98,38 @@ echo "..."
 echo "Instalando aplicações complementares"
 echo "..."
 sudo apt update -y
-sudo apt install mysql-server -y
+# sudo apt install mysql-server -y
 sudo systemctl start mysql
 sudo systemctl enable mysql
 echo "..."
 echo "Instalando aplicações finalizadas!"
 echo "..."
-if sudo docker exec -i Noctu mysql -u aluno -paluno </home/ubuntu/scriptInstalacao/confBanco.sql &&
-   sudo apt install mysql-client -y && mysql -u aluno -paluno -h 127.0.0.1 -P 3306 </home/ubuntu/scriptInstalacao/confBanco.sql; then
+if sudo docker exec -it Noctu mysql -u aluno -paluno </home/ubuntu/scriptInstalacao/confBanco.sql; then
     echo "..."
-    echo "Script SQL executado com sucesso no banco de dados!"
+    echo "Docker Noct.u executado com sucesso!"
     echo "..."
 else
     echo "..."
-    echo "Erro ao executar o script SQL."
+    echo "Erro ao executar o docker."
+    echo "1º linha de execução com caminho do script. sudo docker exec -it Noctu mysql -u aluno -paluno<caminho"
+    echo "Entre em contato com a equipe NOct.u"
     echo "..."
     exit 1
 fi
+ 
+ if mysql -u aluno -paluno -h 127.0.0.1 -P 3306 </home/ubuntu/scriptInstalacao/confBanco.sql; then
+    echo "..."
+    echo "mysql-client instalado com sucesso!"
+    echo "..."
+else
+    echo "..."
+    echo "Erro ao executar o script SQL. mysql -u aluno -paluno -h 127.0.0.1 -P 3306 <caminho"
+    echo "2º linha de execução com caminho do script."
+    echo "Entre em contato com a equipe NOct.u"
+    echo "..."
+    exit 1
+fi
+
 
 # Sudo verificando e executando o Banco de Dados
  sleep 5
