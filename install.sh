@@ -177,12 +177,12 @@ else
 fi
 sleep 5
 echo "..."
-echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Instalando aplicações finalizadas!"
+echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Aplicações finalizadas!"
 echo "..."
 
 #executando Docker
 sleep 15
-if sudo docker exec -it Noctu mysql -u aluno -paluno </home/ubuntu/scriptInstalacao/confBanco.sql; then
+if sudo docker exec -i Noctu mysql -u root -paluno < /home/ubuntu/scriptInstalacao/confBanco.sql; then
     echo "..."
     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Docker Noct.u executado com sucesso!"
     echo "..."
@@ -196,7 +196,7 @@ fi
  
 # execução do script
 sleep 5
-if mysql -u aluno -paluno -h 127.0.0.1 -P 3306 </home/ubuntu/scriptInstalacao/confBanco.sql; then
+if mysql -u root -paluno -h 127.0.0.1 -P 3306 < /home/ubuntu/scriptInstalacao/confBanco.sql; then
     echo "..."
     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Script SQL executado com sucesso!"
     echo "..."
