@@ -2,9 +2,9 @@
 FROM mysql:latest
 
 #Configura o banco de dados, informando o usuário, database e senha
-ENV MYSQL_USER=root
+ENV MYSQL_USER=aluno
 ENV MYSQL_DATABASE=noctuBD
-ENV MYSQL_ROOT_PASSWORD=noctu
+ENV MYSQL_ROOT_PASSWORD=aluno
 
 #Copia o arquivo de configuração do banco para pasta do docker para ser executado
 COPY confBanco.sql /docker-entrypoint-initdb.d/

@@ -80,7 +80,7 @@ echo "Não se preocupe, esse processo não afetará seus aplicativos atuais"
 echo "..."  
 sudo docker pull mysql:latest
 sleep 5
-if sudo docker run -d -p 3306:3306 --name Noctu -e "MYSQL_DATABASE=noctuBD" -e "MYSQL_ROOT_PASSWORD=noctu" mysql:latest; then
+if sudo docker run -d -p 3306:3306 --name Noctu -e "MYSQL_DATABASE=noctuBD" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:latest; then
     echo "..."
     echo "Container do Banco de Dados criado com sucesso!"
     echo "..."
@@ -103,9 +103,9 @@ sudo systemctl enable mysql
 echo "..."
 echo "Instalando aplicações finalizadas!"
 echo "..."
-if sudo docker exec -i Noctu mysql -u root -pnoctu noctuBD < confBanco.sql &&
+if sudo docker exec -i Noctu mysql -u aluno -paluno noctuBD < confBanco.sql &&
    sudo apt install mysql-client -y &&
-   sudo mysql -u root -pnoctu -h 127.0.0.1 -P 3306 noctuBD < confBanco.sql; then
+   sudo mysql -u aluno -paluno -h 127.0.0.1 -P 3306 noctuBD < confBanco.sql; then
     echo "..."
     echo "Script SQL executado com sucesso no banco de dados!"
     echo "..."
