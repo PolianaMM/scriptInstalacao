@@ -100,10 +100,11 @@ else
     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro ao criar o container do Banco de dados."
     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe Noct.u e informe o comando = docker pull mysql:latest"
     echo "..."
-
-sleep 5
+    exit 1
+fi
 
 #Criando container do Banco de Dados
+sleep 5
 if sudo docker run -d -p 3306:3306 --name Noctu -e "MYSQL_DATABASE=noctuBD" -e "MYSQL_ROOT_PASSWORD=aluno" mysql:latest; then
     echo "..."
     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Container do Banco de Dados criado com sucesso!"
@@ -133,8 +134,22 @@ else
     exit 1
 fi
 
+#instalando mysql-server
+sleep 5
+if sudo apt install mysql-server -y; then
+    echo "..."
+    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) MySQL-Server instalado!"
+    echo "..."
+else
+    echo "..."
+    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro iniciar MySQL-Server."
+    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = install mysql-server"
+    echo "..."
+    exit 1
+fi
+
 #Iniciando mysql
-# sudo apt install mysql-server -y
+sleep 5
 if sudo systemctl start mysql; then
     echo "..."
     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) MySQL iniciado!"
@@ -148,6 +163,7 @@ else
 fi
 
 # habilitando mysql
+sleep 5
 if sudo systemctl enable mysql; then
     echo "..."
     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) MySQL Habilitado!"
@@ -159,12 +175,13 @@ else
     echo "..."
     exit 1
 fi
-
+sleep 5
 echo "..."
 echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Instalando aplicações finalizadas!"
 echo "..."
 
 #executando Docker
+sleep 15
 if sudo docker exec -it Noctu mysql -u aluno -paluno </home/ubuntu/scriptInstalacao/confBanco.sql; then
     echo "..."
     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Docker Noct.u executado com sucesso!"
@@ -178,6 +195,7 @@ else
 fi
  
 # execução do script
+sleep 5
 if mysql -u aluno -paluno -h 127.0.0.1 -P 3306 </home/ubuntu/scriptInstalacao/confBanco.sql; then
     echo "..."
     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Script SQL executado com sucesso!"
@@ -208,7 +226,7 @@ fi
  fi
 
 # verificando e instalando java 17
-sleep 4
+sleep 5
 echo "..."
 echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Verificando se você possui o Java instalado na sua máquina!"
 echo "..."
