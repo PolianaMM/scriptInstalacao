@@ -214,7 +214,7 @@ fi
  echo "..."
  echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Iniciando Banco de Dados" 
  echo "..."
- if sudo docker exec noctuBD service mysql start; then
+ if sudo docker exec Noctu service mysql start; then
     echo "..."
     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Banco de Dados Iniciado com sucesso!"
     echo "..."
