@@ -12,8 +12,10 @@ Dar permissão para acessar a pasta (sudo chmod +rx /home/ubuntu/noctu/script)
 
 Entra na pasta onde estão os arquivos utilizando cd nomeDaPasta
 
-Dar permissão para executar o arquivo (sudo chmod +x /home/ubuntu/noctu/script/install.sh)
+Dar permissão para executar o arquivo Docker (sudo chmod +x /home/ubuntu/noctu/script/install.sh)
 
-Dar permissão para executar o arquivo (sudo chmod +x /home/ubuntu/noctu/script/confBanco.sql)
+Dar permissão para executar o arquivo Banco (sudo chmod +x /home/ubuntu/noctu/script/confBanco.sql)
+
+Dar permissão para executar o arquivo Java (sudo chmod +x /home/ubuntu/noctu/script/java.sh)
 
 Executar script (./install.sh)
