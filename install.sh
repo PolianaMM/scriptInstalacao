@@ -134,52 +134,6 @@ else
     exit 1
 fi
 
-#instalando mysql-server
-# sleep 5
-# if sudo apt install mysql-server -y; then
-#     echo "..."
-#     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) MySQL-Server instalado!"
-#     echo "..."
-# else
-#     echo "..."
-#     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro iniciar MySQL-Server."
-#     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = install mysql-server"
-#     echo "..."
-#     exit 1
-# fi
-
-#Iniciando mysql
-# sleep 5
-# if sudo systemctl start mysql; then
-#     echo "..."
-#     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) MySQL iniciado!"
-#     echo "..."
-# else
-#     echo "..."
-#     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro iniciar MySQL."
-#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = start mysql"
-#     echo "..."
-#     exit 1
-# fi
-
-# habilitando mysql
-# sleep 5
-# if sudo systemctl enable mysql; then
-#     echo "..."
-#     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) MySQL Habilitado!"
-#     echo "..."
-# else
-#     echo "..."
-#     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro habilitar MySQL."
-#     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = enable mysql"
-#     echo "..."
-#     exit 1
-# fi
-# sleep 5
-# echo "..."
-# echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Aplicações finalizadas!"
-# echo "..."
-
 #executando Docker
 sleep 15
 if sudo docker exec -i Noctu mysql -u root -paluno < /home/ubuntu/scriptInstalacao/confBanco.sql; then
@@ -193,37 +147,6 @@ else
     echo "..."
     exit 1
 fi
- 
-# execução do script
-#sleep 5
-#if mysql -u root -paluno -h 127.0.0.1 -P 3306 < /home/ubuntu/scriptInstalacao/confBanco.sql; then
-#    echo "..."
-#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Script SQL executado com sucesso!"
-#    echo "..."
-#else
-#    echo "..."
-#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro ao executar o script SQL."
-#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = mysql -u XX -pXX -h host -P 3306 </caminhoScript"
-#    echo "..."
-#    exit 1
-#fi
-
-# Executando o Banco de Dados
-# sleep 15
-# echo "..."
-# echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Iniciando Banco de Dados" 
-# echo "..."
-# if sudo docker exec Noctu service mysql start; then
-#    echo "..."
-#    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Banco de Dados Iniciado com sucesso!"
-#    echo "..."
-# else
-#     echo "..."
-#     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro ao iniciar Banco de dados"
-#     echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = docker exec noctuBD service mysql start"
-#     echo "..."
-# exit 1
-# fi
 
 chmod +x java.sh
 
