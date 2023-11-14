@@ -138,7 +138,7 @@ else
     exit 1
 fi
 
-chmod +x java.sh
+sudo chmod +x /home/ubuntu/noctu/script/java.sh
 
 ./java.sh
 

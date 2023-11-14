@@ -46,7 +46,7 @@ if [ ! -f "$jar_nome" ]; then
   echo "Baixando a aplicação JAR..."
   sudo apt install wget -y
   sleep 5
-  wget "$jar_url" -O "$jar_nome"
+  sudo wget "$jar_url" -O "$jar_nome"
 # Verificar se o download foi bem-sucedido
     if [ $? -eq 0 ]; then
       echo "..."

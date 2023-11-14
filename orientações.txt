@@ -12,8 +12,8 @@ Dar permissão para acessar a pasta (sudo chmod +rx /home/ubuntu/noctu/script)
 
 Entra na pasta onde estão os arquivos utilizando cd nomeDaPasta
 
-Dar permissão para executar o arquivo (chmod +x /home/ubuntu/noctu/script/install.sh)
+Dar permissão para executar o arquivo (sudo chmod +x /home/ubuntu/noctu/script/install.sh)
 
-Dar permissão para executar o arquivo (chmod +x /home/ubuntu/noctu/script/confBanco.sql)
+Dar permissão para executar o arquivo (sudo chmod +x /home/ubuntu/noctu/script/confBanco.sql)
 
 Executar script (./install.sh)
