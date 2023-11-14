@@ -1,61 +1,82 @@
 #!/bin/bash
 
-PURPLE='0;35'
-NC='\033[0m' 
-VERSAO=11
+# URL do arquivo JAR no GitHub
+jar_url="https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar"
+
+# Nome do arquivo JAR após o download
+jar_nome="noctu-looca.jar"
 
 # verificando e instalando java 17
 sleep 5
 echo "..."
-echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Verificando se você possui o Java instalado na sua máquina!"
+echo "Verificando se você possui o Java instalado na sua máquina!"
 echo "..."
 if which java > /dev/null 2>&1; then
   echo "..."
-  echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Java não está instalado."
+  echo "Java não está instalado."
   echo "..."
-  read -p "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Gostaria de instalar o Java versão 17? [s/n] " get
+  read -p "Gostaria de instalar o Java versão 17? [s/n] " get
   if [ "$get" == "s" ]; then
     sudo apt install openjdk-17-jre -y
+    sudo apt update && sudo apt upgrade -y
     echo "..."
-    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Java Instalado com sucesso!"
+    echo "Java Instalado com sucesso!"
     echo "..."
   else
     echo "..."
-    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Você escolheu não prosseguir. Por gentileza entre em contato com no equipe Noct.u."
+    echo "Você escolheu não prosseguir. Por gentileza entre em contato com no equipe Noct.u."
     echo "..."
     exit 1
   fi
 else
   echo "..."
-  echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Java já Instalado!"
+  echo "Java já Instalado!"
   echo "..."
 fi
 
-#instalação e instalação do .jar
+#instalação do .jar
 sleep 5
 echo "..."
-echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Instalando aplicação Noct.u"
-echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Logo inicializaremos a sua central de monitoramento"
+echo "Instalando aplicação Noct.u"
+echo "Logo inicializaremos a sua central de monitoramento"
 echo "..." 
-echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Estamos instalando a aplicação"
+echo "Estamos instalando a aplicação"
 echo "..."
-if curl -LJO https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar; then
-    if [ -f "noctu-looca.jar" ]; then
-        echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Arquivo noctu-looca.jar baixado e instalado com sucesso!"
-        # Executando a aplicação somente se o download do arquivo der certo
-        java -jar noctu-looca.jar
+if [ ! -f "$jar_nome" ]; then
+  echo "Baixando a aplicação JAR..."
+  sudo apt install wget -y
+  sleep 5
+  wget "$jar_url" -O "$jar_nome"
+# Verificar se o download foi bem-sucedido
+    if [ $? -eq 0 ]; then
+      echo "..."
+      echo "Download do arquivo concluído com sucesso!"
+      echo "..."
     else
-        echo "..."
-        echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) O arquivo noctu-looca.jar não foi encontrado."
-        echo "..."
-        exit 1
+      echo "..."
+      echo "Erro ao baixar o arquivo JAR."
+      echo "Entre em contato com a equipe Noctu e informe o comando = wget "" -O ""."
+      echo "..."
+      exit 1
     fi
 else
     echo "..."
-    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Erro ao baixar o arquivo noctu-looca.jar."
-    echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) Entre em contato com a equipe NOct.u e informe o comando = curl -LJO https://link.jar"
+    echo "Arquivo JAR já existe. Continuando a execução..."
     echo "..."
-    exit 1
 fi
 
-echo "$(tput setaf 10)[Noct.u]:$(tput setaf 7) BEM - VINDO A NOCT.U!"
+# Executar o arquivo JAR
+java -jar "$jar_nome"
+
+# Verificar se a execução foi bem-sucedida
+if [ $? -eq 0 ]; then
+    echo "..."
+    echo "Execução do arquivo JAR bem-sucedida."
+    echo "..."
+else
+    echo "..."
+    echo "Erro ao executar o arquivo JAR."
+    echo "..."
+fi
+
+echo "BEM - VINDO A NOCT.U!"
