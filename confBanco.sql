@@ -82,7 +82,7 @@ INSERT INTO  usuario (nome, email, senha, fkTipoUsuario, fkEmpresaLocadora, fkEm
     ('Poliana', 'poliana.militao@sptech.school', '1234', 1, 1, 1),
     ('Samuel', 'samuel.silva@sptech.school', '1234', 1, 1, 1),
     ('Guilherme', 'guilherme.moura@sptech.school', '1234', 1, 1, 1),
-    ('Matheus', 'sthefanny.bertolon@sptech.school', '1234', 1, 1, 1),
+    ('Matheus', 'matheus.anjos@sptech.school', '1234', 1, 1, 1),
     ('Sthefanny', 'sthefanny.bertolon@sptech.school', '1234', 1, 1, 1);
 
 CREATE TABLE modeloComputador(
