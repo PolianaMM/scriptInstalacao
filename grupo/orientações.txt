@@ -1,0 +1,21 @@
+Criar usuário (sudo adduser nome-do-usuario)
+
+Dar permissão sudo (sudo usermod -aG sudo nome-do-usuario)
+
+Baixar o git (sudo apt install git)
+
+Dar permissão de acesso a pasta (sudo chmod +rx /home/ubuntu)
+
+Fazer git clone do repositório do script (sudo git clone *link_repositório*)
+
+Dar permissão para acessar a pasta (sudo chmod +rx /home/ubuntu/noctu/script)
+
+Entra na pasta onde estão os arquivos utilizando cd nomeDaPasta
+
+Dar permissão para executar o arquivo Docker (sudo chmod +x /home/ubuntu/noctu/script/install.sh)
+
+Dar permissão para executar o arquivo Banco (sudo chmod +x /home/ubuntu/noctu/script/confBanco.sql)
+
+Dar permissão para executar o arquivo Java (sudo chmod +x /home/ubuntu/noctu/script/java.sh)
+
+Executar script (./install.sh)

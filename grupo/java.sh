@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # URL do arquivo JAR no GitHub
-jar_url="https://github.com/PolianaMM/jarPoliana/raw/main/out/artifacts/jar_individual_jar/jar-individual.jar"
+jar_url="https://github.com/Noct-U/Noct.u/raw/main/java/out/artifacts/noctu_looca_jar/noctu-looca.jar"
 
 # Nome do arquivo JAR após o download
-jar_nome="jar-individual.jar"
+jar_nome="noctu-looca.jar"
 
 # verificando e instalando java 17
 sleep 5
