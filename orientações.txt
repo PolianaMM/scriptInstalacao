@@ -21,3 +21,22 @@ Dar permissão para executar o arquivo Banco (sudo chmod +x /home/ubuntu/scriptI
 Dar permissão para executar o arquivo Java (sudo chmod +x /home/ubuntu/scriptInstalacao/java.sh)
 
 Executar script (./install.sh)
+
+----------------------------------------------------------------------------------------------------------
+
+Para comandos no mysql
+
+sudo docker ps
+
+sudo docker exec -it Noctu /bin/bash;
+
+mysql -u aluno -h 172.17.0.1 -p
+
+USE noctuBD;
+
+SHOW tables;
+
+Ideias de selects:
+ select * from hardware;
+ select * from usuario;
+ select * from componente;
