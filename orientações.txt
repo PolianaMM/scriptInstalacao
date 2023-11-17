@@ -1,6 +1,6 @@
 Criar usuário (sudo adduser nome-do-usuario)
 
-Dar permissão sudo (sudo usermod -aG sudo nome-do-usuario)
+Dar permissão sudo (  nome-do-usuario)
 
 Entrar no usuario (su nome-do-usuario)
 

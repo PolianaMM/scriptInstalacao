@@ -1,7 +1,11 @@
 #!/bin/bash
+#cor:
 PURPLE='0;35'
-NC='\033[0m' 
+#redefine formatação do texto:
+NC='\033[0m'
+#especifica número da versão 
 VERSAO=11
+
 #Sudo instalando e atualizando pacotes iniciais da VM
 echo "..."
 echo -e "\033[${PURPLE}m[Noct.u]:${NC} Olá usuário! Bem -vindo a Noct.u! Vamos iniciar nossa instalação!!"
