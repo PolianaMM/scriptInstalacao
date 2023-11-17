@@ -9,7 +9,7 @@ jar_nome="jar-individual.jar"
 # verificando e instalando java 17
 sleep 5
 echo "..."
-echo "Verificando se você possui o Java instalado na sua máquina!"
+echo -e "\033[${PURPLE}m[Bot assistant]:${NC} Verificando se você possui o Java instalado na sua máquina!"
 echo "..."
 
 #validação do java: 
@@ -34,13 +34,13 @@ if which java > /dev/null 2>&1; then
 
   if [ "$(echo -e "17\n$java_version" | sort -V | head -n 1)" == "17" ]; then
     echo "..."
-    echo "A versão do JDK é igual ou superior a 17."
+    echo -e "\033[${PURPLE}m[Bot assistant]:${NC} A versão do JDK é igual ou superior a 17."
     echo "..."
     sleep 5
   else
     echo "..."
-    echo "A versão do JDK é inferior a 17."
-    echo "Deseja atualizar o java? [s/n]"
+    echo -e "\033[${PURPLE}m[Bot assistant]:${NC} A versão do JDK é inferior a 17."
+    echo -e "\033[${PURPLE}m[Bot assistant]:${NC} Deseja atualizar o java? [s/n]"
     echo "..."
     read get
     if [ "$get" == "s" ]; then
@@ -48,20 +48,20 @@ if which java > /dev/null 2>&1; then
       sleep 5
     else
       echo "..."
-      echo "Você escolheu não prosseguir. Não poderemos continuar com instalação da aplicação."
+      echo -e "\033[${PURPLE}m[Bot assistant]:${NC} Você escolheu não prosseguir. Não poderemos continuar com instalação da aplicação."
       echo "..."
     fi
   fi
 else
   echo "..."
-  echo "Java não está instalado."
-  echo "Gostaria de instalar o OpenJDK-17? [s/n]"
+  echo -e "\033[${PURPLE}m[Bot assistant]:${NC} Java não está instalado."
+  echo -e "\033[${PURPLE}m[Bot assistant]:${NC} Gostaria de instalar o OpenJDK-17? [s/n]"
   echo "..."
   read get
   if [ "$get" == "s" ]; then
     sudo apt install openjdk-17-jre -y
   else
-    echo "Você escolheu não prosseguir. Não poderemos continuar com instalação da aplicação"
+    echo -e "\033[${PURPLE}m[Bot assistant]:${NC} Você escolheu não prosseguir. Não poderemos continuar com instalação da aplicação"
   fi
 fi
 sleep 5
@@ -71,14 +71,14 @@ sudo apt update && sudo apt upgrade -y
 #instalação do .jar
 sleep 5
 echo "..."
-echo "Instalando aplicação Noct.u"
-echo "Logo inicializaremos a sua central de monitoramento"
+echo -e "\033[${PURPLE}m[Bot assistant]:${NC} Instalando aplicação Noct.u"
+echo -e "\033[${PURPLE}m[Bot assistant]:${NC} Logo inicializaremos a sua central de monitoramento"
 echo "..." 
-echo "Estamos instalando a aplicação"
+echo -e "\033[${PURPLE}m[Bot assistant]:${NC} Estamos instalando a aplicação"
 echo "..."
 if [ ! -f "$jar_nome" ]; then
   echo "..." 
-  echo "Baixando a aplicação JAR..."
+  echo -e "\033[${PURPLE}m[Bot assistant]:${NC} Baixando a aplicação JAR..."
   echo "..." 
   sudo apt install wget -y
   sleep 5
@@ -86,18 +86,18 @@ if [ ! -f "$jar_nome" ]; then
 # Verificar se o download foi bem-sucedido
     if [ $? -eq 0 ]; then
       echo "..."
-      echo "Download do arquivo concluído com sucesso!"
+      echo -e "\033[${PURPLE}m[Noct.u]:${NC} Download do arquivo concluído com sucesso!"
       echo "..."
     else
       echo "..."
-      echo "Erro ao baixar o arquivo JAR."
-      echo "Entre em contato com a equipe Noctu e informe o comando = wget "" -O ""."
+      echo -e "\033[${PURPLE}m[Noct.u]:${NC} Erro ao baixar o arquivo JAR."
+      echo -e "\033[${PURPLE}m[Noct.u]:${NC} Entre em contato com a equipe Noctu e informe o comando = wget "" -O ""."
       echo "..."
       exit 1
     fi
 else
     echo "..."
-    echo "Arquivo JAR já existe. Continuando a execução..."
+    echo -e "\033[${PURPLE}m[Noct.u]:${NC} Arquivo JAR já existe. Vamos inicializar..."
     echo "..."
 fi
 
@@ -107,12 +107,12 @@ java -jar "$jar_nome"
 # Verificar se a execução foi bem-sucedida
 if [ $? -eq 0 ]; then
     echo "..."
-    echo "Execução do arquivo JAR bem-sucedida."
+    echo -e "\033[${PURPLE}m[Noct.u]:${NC} Execução do arquivo JAR bem-sucedida."
+    echo -e "\033[${PURPLE}m[Noct.u]:${NC} BEM - VINDO A NOCT.U!"
     echo "..."
 else
     echo "..."
-    echo "Erro ao executar o arquivo JAR."
+    echo -e "\033[${PURPLE}m[Noct.u]:${NC} Erro ao executar o arquivo JAR."
     echo "..."
 fi
 
-echo "BEM - VINDO A NOCT.U!"
