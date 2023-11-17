@@ -1,6 +1,6 @@
 Criar usuário (sudo adduser nome-do-usuario)
 
-Dar permissão sudo (  nome-do-usuario)
+Dar permissão sudo (sudo usermod -aG sudo nome-do-usuario)
 
 Entrar no usuario (su nome-do-usuario)
 
@@ -37,6 +37,18 @@ USE noctuBD;
 SHOW tables;
 
 Ideias de selects:
- select * from hardware;
+ select * from empresa;
+ select * from endereco;
+ select * from local;
+ select * from empresaLocataria;
+ select * from tipoUsuario;
  select * from usuario;
+ select * from modeloComputador;
+ select * from computador;
+ select * from unidadeMedida;
+ select * from tipoHardware;
+ select * from hardware;
+ select * from parametro;
  select * from componente;
+ select * from captura;
+ select * from alerta;
