@@ -19,7 +19,7 @@ Dar permissão para executar o arquivo Docker (sudo chmod +x /home/ubuntu/script
 Dar permissão para executar o arquivo Banco (sudo chmod +x /home/ubuntu/scriptInstalacao/confBanco.sql)
 
 Dar permissão para executar o arquivo Java (sudo chmod +x /home/ubuntu/scriptInstalacao/java.sh)
-
+      
 Executar script (./install.sh)
 
 ----------------------------------------------------------------------------------------------------------

@@ -1,5 +1,12 @@
 #!/bin/bash
 
+#cor:
+PURPLE='0;35'
+#redefine formatação do texto:
+NC='\033[0m'
+#especifica número da versão 
+VERSAO=11
+
 # URL do arquivo JAR no GitHub
 jar_url="https://github.com/PolianaMM/jarPoliana/raw/main/out/artifacts/jar_individual_jar/jar-individual.jar"
 
